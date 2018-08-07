@@ -258,7 +258,31 @@
                   </td>
               
                   <td>
-                    <%= pun.score %>
+                    <div> 
+                      <% tot = 1000 %>
+                      <% cont = pun.score %>
+                      <% now = 100 * cont/tot %>
+                      <% sty = "width:" + now.round(2).to_s + "%"  %>
+                      <% nivel="" %>
+                      <% if cont >=800 %>
+                      <%     nivel = ["Muy Alto", "primary"] %>
+                      <% elsif cont >=600 %>
+                      <%     nivel = ["Alto", "success"] %>
+                      <% elsif cont >=400 %>
+                      <%     nivel = ["Medio", "info"] %>
+                      <% elsif cont >=200 %>
+                      <%     nivel = ["Bajo", "warning"] %>
+                      <% else %>
+                      <%     nivel = ["Muy Bajo", "danger"] %>
+                      <% end %>
+                    
+                      <div class="progress">
+                          <div class="progress-bar bg-<%= nivel[1] %>" role="progressbar" style="<%= sty %>;" aria-valuenow =<%= now %>  aria-valuemin=0 aria-valuemax="<%= tot %>"> 
+                            <%= cont %> 
+                          </div>
+                      </div>
+                    </div> 
+                    
                   </td>
               
                   <td>
