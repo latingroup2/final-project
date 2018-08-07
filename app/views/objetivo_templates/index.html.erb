@@ -1,0 +1,74 @@
+<h1>
+  All objetivos
+</h1>
+
+<a href="/objetivos/new">
+  Add a new objetivo
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Eje
+    </th>
+
+    <th>
+      Descripcion
+    </th>
+
+    <th>
+      Numeral
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @objetivos.each do |objetivo| %>
+  <tr>
+    <td>
+      <%= objetivo.id %>
+    </td>
+
+    <td>
+      <%= objetivo.eje_id %>
+    </td>
+
+    <td>
+      <%= objetivo.descripcion %>
+    </td>
+
+    <td>
+      <%= objetivo.numeral %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(objetivo.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(objetivo.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/objetivos/<%= objetivo.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

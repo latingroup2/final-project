@@ -1,0 +1,84 @@
+<!-- Validation failure messages -->
+<% if @try.present? %>
+  <% if @try.errors.any? %>
+    <% @try.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new try
+</h1>
+
+<hr>
+
+<form action="/create_try" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @try.try(:user_id) %>">
+  </div>
+
+  <!-- Label and input for excercise_id -->
+  <div class="form-group">
+    <label for="excercise_id">
+      Excercise
+    </label>
+
+    <input type="text" id="excercise_id" name="excercise_id" class="form-control" value="<%= @try.try(:excercise_id) %>">
+  </div>
+
+  <!-- Label and input for user_answer -->
+  <div class="form-group">
+    <label for="user_answer">
+      User answer
+    </label>
+
+    <input type="text" id="user_answer" name="user_answer" class="form-control" value="<%= @try.try(:user_answer) %>">
+  </div>
+
+  <!-- Label and input for correct -->
+  <div class="form-check">
+    <input type="hidden" value="0" name="correct">
+    <input id="correct" class="form-check-input" name="correct" type="checkbox" <%= "checked" if @try.try(:correct) %>>
+
+    <label for="correct" class="form-check-label">
+      Correct
+    </label>
+  </div>
+
+  <!-- Label and input for active -->
+  <div class="form-check">
+    <input type="hidden" value="0" name="active">
+    <input id="active" class="form-check-input" name="active" type="checkbox" <%= "checked" if @try.try(:active) %>>
+
+    <label for="active" class="form-check-label">
+      Active
+    </label>
+  </div>
+
+  <!-- Label and input for intento_guia_id -->
+  <div class="form-group">
+    <label for="intento_guia_id">
+      Intento guia
+    </label>
+
+    <input type="text" id="intento_guia_id" name="intento_guia_id" class="form-control" value="<%= @try.try(:intento_guia_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create try
+  </button>
+</form>
+
+<hr>
+
+<a href="/tries">
+  Go back
+</a>

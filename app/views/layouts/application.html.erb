@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
+    <title>Aula Digital</title>
     <%= csrf_meta_tags %>
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
 
     <!-- Connect Font Awesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
 
     <!-- Connect Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/litera/bootstrap.min.css"> 
 
     <!-- Connect Bootstrap JavaScript and its dependencies -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -23,9 +23,111 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    
+    <!--- Math compilator --->
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+
   </head>
 
   <body>
+    
+<!--- BARRA DE NAVEGACION --->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Aula Digital</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <% if current_user != nil %>
+            <li class="nav-item"><a class="nav-link" href="/ejercicios">Ver Mural</a></li>
+            <% if current_user.nivels.last != nil %>
+              <li class="nav-item"><a class="nav-link" href="/nivels/<%= current_user.nivels.last.id %>">Ver Progreso</a></li>
+            <% end %>
+            <li class="nav-item dropdown">
+              
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ejercitar
+              </a>
+              
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/tests"> Guias asignadas </a>
+                  <a class="dropdown-item" href="/contenidos/especifico"> Contenido específico </a>
+                  <a class="dropdown-item" href="/contenidos/avanzar"> Avanzar en contenidos </a>
+              </div>
+            </li>
+            
+
+          <% elsif current_profesor != nil %>
+            
+            <li class="nav-item"><a class="nav-link" href="/tests_prof">Ver Guías</a></li>
+            <li class="nav-item"><a class="nav-link" href="/salas_prof">Ver Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ejercicios">Monitoreo</a></li>
+            
+          <% end %>
+          
+        </ul>
+
+        <ul class="navbar-nav">
+          <% if current_profesor != nil %>
+            <li class="nav-item">
+              <a href="/" class="nav-link" >
+                <%= current_profesor.email %>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/profesors/sign_out" data-method="delete" class="nav-link">
+                Sign Out
+              </a>
+            </li>
+          <% elsif current_user == nil %>
+            <li class="nav-item">
+              <a href="/users/sign_in" class="nav-link" >
+                Sign In
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/users/sign_up" class="nav-link" >
+                Sign Up
+              </a>
+            </li>
+          
+          <% else %>
+          
+            <li class="nav-item">
+              <a href="/" class="nav-link" >
+                <%= current_user.email %>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/users/sign_out" data-method="delete" class="nav-link">
+                Sign Out
+              </a>
+            </li>
+          
+          <% end %> 
+          
+        </ul>
+      </div>
+    </nav>
+  
+  <!--- MENSAJE AL ALUMNO ---> 
+  <% if flash[:notice].present? %>
+    <% cla = "alert alert-info" %>
+    <% if flash[:notice]=="Correcto! Sigamos así" %>
+          <% cla = "alert alert-success" %>
+    <% elsif flash[:notice]=="No exactamente. Probemos con este:" %>
+        <% cla = "alert alert-warning" %>
+    <%end%>
+    
+    <div class="<%= cla %>" role="alert" align="center">
+          <%= flash[:notice] %>
+    </div>
+<% end %>  
+
     <%= yield %>
 
     <%= dev_tools if Rails.env.development? %>

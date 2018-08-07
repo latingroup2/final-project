@@ -1,0 +1,63 @@
+<h1>
+  Contenido #<%= @contenido.id %> details
+</h1>
+
+<a href="/contenidos/<%= @contenido.id %>/edit">
+  Edit contenido
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Nombre
+  </dt>
+  <dd>
+    <%= @contenido.nombre %>
+  </dd>
+
+  <dt>
+    Anterior
+  </dt>
+  <dd>
+    <%= @contenido.anterior %>
+  </dd>
+
+  <dt>
+    Siguiente
+  </dt>
+  <dd>
+    <%= @contenido.siguiente %>
+  </dd>
+
+  <dt>
+    Categoria
+  </dt>
+  <dd>
+    <%= @contenido.categoria_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@contenido.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@contenido.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_contenido/<%= @contenido.id %>">
+  Delete contenido
+</a>
+
+<hr>
+
+<a href="/contenidos">
+  Go back
+</a>

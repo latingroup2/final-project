@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @contenido.present? %>
+  <% if @contenido.errors.any? %>
+    <% @contenido.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new contenido
+</h1>
+
+<hr>
+
+<form action="/create_contenido" method="post">
+  <!-- Label and input for nombre -->
+  <div class="form-group">
+    <label for="nombre">
+      Nombre
+    </label>
+
+    <textarea id="nombre" name="nombre" class="form-control" rows="3"><%= @contenido.try(:nombre) %></textarea>
+  </div>
+
+  <!-- Label and input for anterior -->
+  <div class="form-group">
+    <label for="anterior">
+      Anterior
+    </label>
+
+    <input type="text" id="anterior" name="anterior" class="form-control" value="<%= @contenido.try(:anterior) %>">
+  </div>
+
+  <!-- Label and input for siguiente -->
+  <div class="form-group">
+    <label for="siguiente">
+      Siguiente
+    </label>
+
+    <input type="text" id="siguiente" name="siguiente" class="form-control" value="<%= @contenido.try(:siguiente) %>">
+  </div>
+
+  <!-- Label and input for categoria_id -->
+  <div class="form-group">
+    <label for="categoria_id">
+      Categoria
+    </label>
+
+    <input type="text" id="categoria_id" name="categoria_id" class="form-control" value="<%= @contenido.try(:categoria_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create contenido
+  </button>
+</form>
+
+<hr>
+
+<a href="/contenidos">
+  Go back
+</a>

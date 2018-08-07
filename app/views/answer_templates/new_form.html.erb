@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @answer.present? %>
+  <% if @answer.errors.any? %>
+    <% @answer.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new answer
+</h1>
+
+<hr>
+
+<form action="/create_answer" method="post">
+  <!-- Label and input for right_answer -->
+  <div class="form-group">
+    <label for="right_answer">
+      Right answer
+    </label>
+
+    <textarea id="right_answer" name="right_answer" class="form-control" rows="3"><%= @answer.try(:right_answer) %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_1 -->
+  <div class="form-group">
+    <label for="wrong_1">
+      Wrong 1
+    </label>
+
+    <textarea id="wrong_1" name="wrong_1" class="form-control" rows="3"><%= @answer.try(:wrong_1) %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_2 -->
+  <div class="form-group">
+    <label for="wrong_2">
+      Wrong 2
+    </label>
+
+    <textarea id="wrong_2" name="wrong_2" class="form-control" rows="3"><%= @answer.try(:wrong_2) %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_3 -->
+  <div class="form-group">
+    <label for="wrong_3">
+      Wrong 3
+    </label>
+
+    <textarea id="wrong_3" name="wrong_3" class="form-control" rows="3"><%= @answer.try(:wrong_3) %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_4 -->
+  <div class="form-group">
+    <label for="wrong_4">
+      Wrong 4
+    </label>
+
+    <textarea id="wrong_4" name="wrong_4" class="form-control" rows="3"><%= @answer.try(:wrong_4) %></textarea>
+  </div>
+
+  <!-- Label and input for excercise_id -->
+  <div class="form-group">
+    <label for="excercise_id">
+      Excercise
+    </label>
+
+    <input type="text" id="excercise_id" name="excercise_id" class="form-control" value="<%= @answer.try(:excercise_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create answer
+  </button>
+</form>
+
+<hr>
+
+<a href="/answers">
+  Go back
+</a>

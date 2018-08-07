@@ -1,0 +1,77 @@
+<h1>
+  Ejercicio #<%= @ejercicio.id %> details
+</h1>
+
+<a href="/ejercicios/<%= @ejercicio.id %>/edit">
+  Edit ejercicio
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Contenido
+  </dt>
+  <dd>
+    <%= @ejercicio.contenido_id %>
+  </dd>
+
+  <dt>
+    Dificultad
+  </dt>
+  <dd>
+    <%= @ejercicio.dificultad %>
+  </dd>
+
+  <dt>
+    Imagen
+  </dt>
+  <dd>
+    <%= @ejercicio.imagen %>
+  </dd>
+
+  <dt>
+    Pregunta
+  </dt>
+  <dd>
+    <%= @ejercicio.pregunta %>
+  </dd>
+
+  <dt>
+    Indicador
+  </dt>
+  <dd>
+    <%= @ejercicio.indicador_id %>
+  </dd>
+
+  <dt>
+    Habilidad
+  </dt>
+  <dd>
+    <%= @ejercicio.habilidad %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ejercicio.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@ejercicio.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_ejercicio/<%= @ejercicio.id %>">
+  Delete ejercicio
+</a>
+
+<hr>
+
+<a href="/ejercicios">
+  Go back
+</a>

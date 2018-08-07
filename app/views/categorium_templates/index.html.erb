@@ -1,0 +1,66 @@
+<h1>
+  All categoria
+</h1>
+
+<a href="/categoria/new">
+  Add a new categorium
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Descripcion
+    </th>
+
+    <th>
+      Eje
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @categoria.each do |categorium| %>
+  <tr>
+    <td>
+      <%= categorium.id %>
+    </td>
+
+    <td>
+      <%= categorium.descripcion %>
+    </td>
+
+    <td>
+      <%= categorium.eje_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(categorium.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(categorium.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/categoria/<%= categorium.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

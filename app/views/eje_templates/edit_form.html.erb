@@ -1,0 +1,44 @@
+<!-- Validation failure messages -->
+<% if @eje.errors.any? %>
+  <% @eje.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit eje #<%= @eje.id %>
+</h1>
+
+<hr>
+
+<form action="/update_eje/<%= @eje.id %>" method="post">
+  <!-- Label and input for materia_id -->
+  <div class="form-group">
+    <label for="materia_id">
+      Materia
+    </label>
+
+    <input type="text" id="materia_id" name="materia_id" class="form-control" value="<%= @eje.materia_id %>">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <textarea id="description" name="description" class="form-control" rows="3"><%= @eje.description %></textarea>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update eje
+  </button>
+</form>
+
+<hr>
+
+<a href="/ejes">
+  Go back
+</a>

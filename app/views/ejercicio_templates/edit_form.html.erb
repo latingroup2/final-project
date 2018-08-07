@@ -1,0 +1,80 @@
+<!-- Validation failure messages -->
+<% if @ejercicio.errors.any? %>
+  <% @ejercicio.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit ejercicio #<%= @ejercicio.id %>
+</h1>
+
+<hr>
+
+<form action="/update_ejercicio/<%= @ejercicio.id %>" method="post">
+  <!-- Label and input for contenido_id -->
+  <div class="form-group">
+    <label for="contenido_id">
+      Contenido
+    </label>
+
+    <input type="text" id="contenido_id" name="contenido_id" class="form-control" value="<%= @ejercicio.contenido_id %>">
+  </div>
+
+  <!-- Label and input for dificultad -->
+  <div class="form-group">
+    <label for="dificultad">
+      Dificultad
+    </label>
+
+    <input type="text" id="dificultad" name="dificultad" class="form-control" value="<%= @ejercicio.dificultad %>">
+  </div>
+
+  <!-- Label and input for imagen -->
+  <div class="form-group">
+    <label for="imagen">
+      Imagen
+    </label>
+
+    <input type="text" id="imagen" name="imagen" class="form-control" value="<%= @ejercicio.imagen %>">
+  </div>
+
+  <!-- Label and input for pregunta -->
+  <div class="form-group">
+    <label for="pregunta">
+      Pregunta
+    </label>
+
+    <textarea id="pregunta" name="pregunta" class="form-control" rows="3"><%= @ejercicio.pregunta %></textarea>
+  </div>
+
+  <!-- Label and input for indicador_id -->
+  <div class="form-group">
+    <label for="indicador_id">
+      Indicador
+    </label>
+
+    <input type="text" id="indicador_id" name="indicador_id" class="form-control" value="<%= @ejercicio.indicador_id %>">
+  </div>
+
+  <!-- Label and input for habilidad -->
+  <div class="form-group">
+    <label for="habilidad">
+      Habilidad
+    </label>
+
+    <input type="text" id="habilidad" name="habilidad" class="form-control" value="<%= @ejercicio.habilidad %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update ejercicio
+  </button>
+</form>
+
+<hr>
+
+<a href="/ejercicios">
+  Go back
+</a>

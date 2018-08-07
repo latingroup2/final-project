@@ -1,0 +1,42 @@
+<h1>
+  Test #<%= @test.id %> details
+</h1>
+
+<a href="/tests/<%= @test.id %>/edit">
+  Edit test
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Profesor
+  </dt>
+  <dd>
+    <%= @test.profesor_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@test.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@test.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_test/<%= @test.id %>">
+  Delete test
+</a>
+
+<hr>
+
+<a href="/tests">
+  Go back
+</a>

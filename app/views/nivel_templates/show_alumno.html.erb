@@ -1,0 +1,194 @@
+<% if current_profesor == nil %>
+  <div class="container">
+    <div style="height: 100px;">
+    </div>
+    
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card" style="height: 500px;">
+          <div class="card-title">
+          </div>
+          
+          <div class="card-body" align="center">
+            <div style="height: 50px;">
+            </div>
+            
+            <div>
+              <i class="fas fa-calculator fa-10x"></i>
+            </div>
+            
+            <div style="height: 100px;">
+            </div>
+            
+            <div>
+              <a href="/users/sign_in/" class="btn btn-primary btn-block" align="bottom">
+                
+                  Inicia sesión para empezar a ejercitar
+              </a>
+            </div>
+            <div>
+              <a href="/users/sign_up/" class="btn btn-warning btn-block" align="bottom">
+                
+                  ...O crea una cuenta nueva para empezar!
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <div style="height: 50px;">
+    </div>
+    <!--- puntajes distribucion --->
+    
+    <div class="row">
+          <!--- consolidado Enteros --->
+          <div class="col-md-12">
+            <div class="card border-secondary mb-3">
+              <h6 class="card-header text-white bg-secondary mb-3"> <i class="fas fa-user" style="color:secondary"></i> Nivel del alumno, por categoría </h6>
+              
+              <div class = "row" >
+                <div  class = "card-body">
+                    <div class="col-md-6" align="left" style="font-size:90%;">
+                  <h6> Enteros </h6>
+                    <div> 
+                      <% tot = 1000 %>
+                      <% cont = @puns[0] %>
+                      <% now = 100 * cont/tot %>
+                      <% sty = "width:" + now.round(2).to_s + "%"  %>
+                      <% nivel="" %>
+                      <% if cont >=800 %>
+                      <%     nivel = ["Muy Alto", "primary"] %>
+                      <% elsif cont >=600 %>
+                      <%     nivel = ["Alto", "success"] %>
+                      <% elsif cont >=400 %>
+                      <%     nivel = ["Medio", "info"] %>
+                      <% elsif cont >=200 %>
+                      <%     nivel = ["Bajo", "warning"] %>
+                      <% else %>
+                      <%     nivel = ["Muy Bajo", "danger"] %>
+                      <% end %>
+                      
+                      <%= nivel[0] %>
+
+                      <div class="progress">
+                          <div class="progress-bar bg-<%= nivel[1] %>" role="progressbar" style="<%= sty %>;" aria-valuenow =<%= now %>  aria-valuemin=0 aria-valuemax="<%= tot %>"> 
+                            <%= cont %> 
+                          </div>
+                      </div>
+                    </div> 
+                </div> 
+                </div>
+                
+                <div  class = "card-body">
+                    <div class="col-md-6" align="left" style="font-size:90%;">
+                  <h6> Racionales </h6>
+                        <div> 
+                          <% tot = 1000 %>
+                          <% cont = @puns[1] %>
+                          <% now = 100 * cont/tot %>
+                          <% sty = "width:" + now.round(2).to_s + "%"  %>
+                          <% nivel="" %>
+                          <% if cont >=800 %>
+                          <%     nivel = ["Muy Alto", "primary"] %>
+                          <% elsif cont >=600 %>
+                          <%     nivel = ["Alto", "success"] %>
+                          <% elsif cont >=400 %>
+                          <%     nivel = ["Medio", "info"] %>
+                          <% elsif cont >=200 %>
+                          <%     nivel = ["Bajo", "warning"] %>
+                          <% else %>
+                          <%     nivel = ["Muy Bajo", "danger"] %>
+                          <% end %>
+                          
+                          <%= nivel[0] %>
+    
+                          <div class="progress">
+                              <div class="progress-bar bg-<%= nivel[1] %>" role="progressbar" style="<%= sty %>;" aria-valuenow =<%= now %>  aria-valuemin=0 aria-valuemax="<%= tot %>"> 
+                                <%= cont %> 
+                              </div>
+                          </div>
+                        </div>
+                
+                </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div>
+    
+    <div class="row">
+        <a href="javascript:history.back()" class="btn btn-warning btn-block" > Volver </a>
+    </div>
+    
+    <div style="height: 20px;">
+    </div>
+    <!--- Lista de curso --->
+    
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card border-secondary mb-3">
+            <h6 class="card-header text-white bg-secondary mb-3"> <i class="fas fa-users" style="color:secondary"></i> Ultimos ejercicios 20 contestados </h6>
+            
+            <div class="card-body" align="left" style="font-size:90%;">
+              <table class="table">
+                <tr>
+                  <th>
+                    Ejercicio
+                  </th>
+                  <th>
+                    Materia
+                  </th>
+                  <th>
+                    Contenido
+                  </th>
+                  <th>
+                    Dificultad
+                  </th>
+                  <th>
+                    Resultado
+                  </th>
+                </tr>
+                <% if Try.where("user_id == ?", @alumno.id).last != nil %>
+                    <% lasts = [Try.where("user_id == ?", @alumno.id).count, 10].min %>
+                    <% Try.where("user_id == ?", @alumno.id).last(lasts).reverse().each do |try| %>
+                        <tr>
+                          <th>
+                            <a href = "/ejercicios_prof/<%= try.excercise_id%>"> Ejercicio <%= try.excercise_id %> </a>
+                          </th>
+                          <th>
+                            <p> <%= Ejercicio.find(try.excercise_id).materia.descripcion %> </p>
+                          </th>
+                          <th>
+                            <p> <%= Ejercicio.find(try.excercise_id).contenido.nombre %> </p>
+                          </th>
+                          <th>
+                            <p> <%= Ejercicio.find(try.excercise_id).dificultad %> </p>
+                          </th>
+                          <th>
+                            <% if try.correct %>
+                                <span class="badge badge-pill badge-success">Buena</span> 
+                            <% else %>
+                                <span class="badge badge-pill badge-warning">Mala</span>
+                            <% end %>
+                          </th>
+                        </tr>
+                    <% end %>
+                <% end %>
+              </table>
+              
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+  
+  
+                
+  
+  
+<% end %>

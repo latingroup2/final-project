@@ -1,0 +1,35 @@
+<!-- Validation failure messages -->
+<% if @tema.errors.any? %>
+  <% @tema.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit tema #<%= @tema.id %>
+</h1>
+
+<hr>
+
+<form action="/update_tema/<%= @tema.id %>" method="post">
+  <!-- Label and input for nombre -->
+  <div class="form-group">
+    <label for="nombre">
+      Nombre
+    </label>
+
+    <textarea id="nombre" name="nombre" class="form-control" rows="3"><%= @tema.nombre %></textarea>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update tema
+  </button>
+</form>
+
+<hr>
+
+<a href="/temas">
+  Go back
+</a>

@@ -1,0 +1,197 @@
+<!-- Validation failure messages -->
+<% if @test.errors.any? %>
+  <% @test.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div style="height: 60px;"></div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card border-secondary mb-3" style="min-height: 500px; height:100%;">
+          <h4 class="card-header text-white bg-secondary mb-3"> <i class= "fas fa-file-signature" ></i> Editar guía </h4>
+          
+          <div class="card-body" align="left">
+            
+            <form action="/update_test/<%= @test.id %>" method="post">
+              <!-- Label and input for profesor_id -->
+            
+                <input type="hidden" id="profesor_id" name="profesor_id" class="form-control" value="<%= @test.profesor_id %>">
+                
+              
+                <div class="form-group">
+                
+                  <label for="nombre">
+                    Nombre de la guía
+                  </label>
+              
+                  <input type="text" id="nombre" name="nombre_test" class="form-control" value="<%= @test.nombre %>">
+                
+                </div>
+            
+              <button class="btn btn-primary btn-block">
+                Actualizar guía
+              </button>
+            </form>
+            
+            <div style="height: 50px;"></div>
+            
+ 
+            
+            <table class="table">
+              <tr>
+                <th>
+                  Nombre sección
+                </th>
+                
+                <th>
+                  Contenido
+                </th>
+                
+                <th>
+                  Número de ejercicios
+                </th>
+                
+                <th>
+                </th>
+                
+              </tr>
+              
+              
+              <% if @test != nil %>
+                <% @test.seccions.each do |sec| %>
+                  
+                  <tr>
+                    <td>
+                      <%= sec.nombre %>
+                    </td>
+                    
+                    <td>
+                      <%= Contenido.find(sec.contenido_id).nombre %>
+                    </td>
+                    
+                    <td>
+                      <%= sec.numero_ejercicios %>
+                    </td>
+                    
+                    <td>
+                      <a href="/delete_seccion/<%= sec.id %>" class="btn btn-warning btn-block"> Eliminar </a>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+              
+              <tr>
+                <form action="/create_seccion" method="post">
+                  <!-- Label and input for nombre -->
+                  <td>
+                    <div class="form-group">
+                      <input type="text" id="nombre" name="nombre" class="form-control">
+                    </div>
+                  </td>
+                  
+                  <!-- Label and input for contenido_id -->
+                  <td>
+                    <div class="form-group">
+                      <%= select_tag("contenido_id", options_from_collection_for_select(Contenido.all, :id, :nombre), :class => "form-control") %>
+                    </div>
+                  </td>
+                  <!-- Label and input for test_id -->
+                  
+                  <input type="hidden" id="test_id" name="test_id" class="form-control" value="<%= @test.id %>">
+
+                
+                  <!-- Label and input for numero_ejercicios -->
+                  <td>
+                    <div class="form-group">
+                      <input type="text" id="numero_ejercicios" name="numero_ejercicios" class="form-control" value="# ejercicios">
+                    </div>
+                  </td>
+                  
+                  <td>
+                    <button class="btn btn-success btn-block">
+                      Crear sección
+                    </button>
+                  </td>
+                </form>
+              </tr>
+            </table>
+            
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="card border-secondary mb-3" style="height: 100%;">
+          <h4 class="card-header text-white bg-secondary mb-3"> <i class= "fas fa-file-signature" ></i> Asignar guía </h4>
+          
+          <div class="card-body" align="left">
+            
+            <div style="height: 10px;"></div>
+            
+            <table class="table">
+              <tr>
+                <th>
+                  Cursos asociados 
+                </th>
+                
+                <th>
+                </th>
+                
+              </tr>
+            
+              <% if @test.asignacions.last != nil %>
+                <% @test.asignacions.each do |asig| %>
+                    <tr> 
+                      <td>
+                        <%= Sala.find(asig.sala_id).nombre %>
+                      </td> 
+                      <td>
+                        <a href="/delete_asignacion/<%= asig.id %>" class="btn btn-warning btn-block"> Eliminar </a>
+                      </td>
+                <% end %>
+              <% end %>
+              
+              <tr>
+                <form action="/create_asignacion" method="post">
+
+                  <!-- Label and input for sala_id -->
+                  <td>
+                    <div class="form-group">
+                      <%= select_tag("sala_id", options_from_collection_for_select(Sala.where("profesor_id == ?", @test.profesor_id), :id, :nombre), :class => "form-control") %>
+                    </div>
+                  </td>
+                  
+                  <input type="hidden" id="test_id" name="test_id" class="form-control" value="<%= @test.id %>">
+
+                  
+                  <td>
+                    <button class="btn btn-success btn-block">
+                      Asignar
+                    </button>
+                  </td>
+                </form>
+              </tr>
+              
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div style="height: 30px;"></div>
+    
+    <div class="row">
+      <div class="col-md-4" >
+        <a href="/tests_prof" class="btn btn-primary btn-block"> Volver a guías </a>
+      </div>
+    </div>
+</div>
+
+
+

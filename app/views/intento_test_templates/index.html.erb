@@ -1,0 +1,66 @@
+<h1>
+  All intento tests
+</h1>
+
+<a href="/intento_tests/new">
+  Add a new intento test
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Test
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @intento_tests.each do |intento_test| %>
+  <tr>
+    <td>
+      <%= intento_test.id %>
+    </td>
+
+    <td>
+      <%= intento_test.test_id %>
+    </td>
+
+    <td>
+      <%= intento_test.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(intento_test.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(intento_test.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/intento_tests/<%= intento_test.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

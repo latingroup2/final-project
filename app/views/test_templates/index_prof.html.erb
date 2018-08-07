@@ -1,0 +1,107 @@
+<% if current_profesor != nil %>
+  
+  <div class="container">
+    
+    <div style="height: 10px;"></div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-success mb-3" style="min-height: 500px;">
+          <h4 class="card-header text-white bg-success mb-3"> <i class= "fas fa-file-signature" ></i> Guías </h4>
+          
+          <div class="card-body" align="left">
+            
+            <table class="table">
+              <tr>
+                <th>
+                  Nombre Guía
+                </th>
+            
+                <th>
+                  # ejercicios
+                </th>
+                
+                <th>
+                  Secciones
+                </th>
+                
+                <th>
+                  Cursos asociados
+                </th>
+                
+                <th>
+                </th>
+                
+                <th>
+                </th>
+                
+              </tr>
+              
+              
+              <% if current_profesor.tests.last != nil %>
+                <% current_profesor.tests.each do |gui| %>
+                  
+                  <tr>
+                    <td>
+                      <a href= "/tests/<%= gui.id %>/edit"> <%= gui.nombre %> </a>
+                    </td>
+                    
+                    <td>
+                      <% if gui.seccions.last != nil %>
+                          <% n = 0 %>
+                          <% gui.seccions.each do |sec| %>
+                            <% n = n+sec.numero_ejercicios %> 
+                          <% end %>  
+                          <p >  <%= n %> </p>
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                    
+                    <td>
+                      <% if gui.seccions.last != nil %>
+                          <ul>
+                          <% gui.seccions.each do |sec| %>
+                            <li> <%= sec.nombre %>, (<%=  sec.numero_ejercicios %> ejercicios) </li>
+                          <% end %>  
+                          </ul>
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                      
+                    <td>
+                        <% if gui.salas != nil %>
+                            <ul>
+                              <% gui.salas.each do |sala| %>
+                                <li> <%= sala.nombre %> </li>
+                              <% end %>  
+                            </ul>
+                        <% end %>
+                    </td>  
+                    
+                    <td> <a href = "/tests/<%= gui.id %>/edit" class="btn btn-warning btn-block"> Editar / Asignar </a></td>
+                    <td> <a href = "/delete_test/<%= gui.id %>" class="btn btn-danger btn-block"> Eliminar  </a></td>
+                    
+                  </tr>
+                
+                <% end %>
+              <% end %>
+            </table>
+            
+          </div>
+        </div>
+        <form action="/create_test" method="post">
+          <input type="hidden" id="profesor_id" name="profesor_id" class="form-control" value="<%= current_profesor.id %>">
+          
+          <button class="btn btn-primary btn-block">
+              Crear nueva Guía
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div style="height: 10px;"></div>
+    
+  </div>
+<% end %>  

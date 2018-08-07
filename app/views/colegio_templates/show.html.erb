@@ -1,0 +1,42 @@
+<h1>
+  Colegio #<%= @colegio.id %> details
+</h1>
+
+<a href="/colegios/<%= @colegio.id %>/edit">
+  Edit colegio
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Nombre
+  </dt>
+  <dd>
+    <%= @colegio.nombre %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@colegio.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@colegio.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_colegio/<%= @colegio.id %>">
+  Delete colegio
+</a>
+
+<hr>
+
+<a href="/colegios">
+  Go back
+</a>

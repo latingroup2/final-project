@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @objetivo.present? %>
+  <% if @objetivo.errors.any? %>
+    <% @objetivo.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new objetivo
+</h1>
+
+<hr>
+
+<form action="/create_objetivo" method="post">
+  <!-- Label and input for eje_id -->
+  <div class="form-group">
+    <label for="eje_id">
+      Eje
+    </label>
+
+    <input type="text" id="eje_id" name="eje_id" class="form-control" value="<%= @objetivo.try(:eje_id) %>">
+  </div>
+
+  <!-- Label and input for descripcion -->
+  <div class="form-group">
+    <label for="descripcion">
+      Descripcion
+    </label>
+
+    <textarea id="descripcion" name="descripcion" class="form-control" rows="3"><%= @objetivo.try(:descripcion) %></textarea>
+  </div>
+
+  <!-- Label and input for numeral -->
+  <div class="form-group">
+    <label for="numeral">
+      Numeral
+    </label>
+
+    <input type="text" id="numeral" name="numeral" class="form-control" value="<%= @objetivo.try(:numeral) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create objetivo
+  </button>
+</form>
+
+<hr>
+
+<a href="/objetivos">
+  Go back
+</a>

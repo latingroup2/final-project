@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @seccion.present? %>
+  <% if @seccion.errors.any? %>
+    <% @seccion.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new seccion
+</h1>
+
+<hr>
+
+<form action="/create_seccion" method="post">
+  <!-- Label and input for contenido_id -->
+  <div class="form-group">
+    <label for="contenido_id">
+      Contenido
+    </label>
+
+    <input type="text" id="contenido_id" name="contenido_id" class="form-control" value="<%= @seccion.try(:contenido_id) %>">
+  </div>
+
+  <!-- Label and input for test_id -->
+  <div class="form-group">
+    <label for="test_id">
+      Test
+    </label>
+
+    <input type="text" id="test_id" name="test_id" class="form-control" value="<%= @seccion.try(:test_id) %>">
+  </div>
+
+  <!-- Label and input for numero_ejercicios -->
+  <div class="form-group">
+    <label for="numero_ejercicios">
+      Numero ejercicios
+    </label>
+
+    <input type="text" id="numero_ejercicios" name="numero_ejercicios" class="form-control" value="<%= @seccion.try(:numero_ejercicios) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create seccion
+  </button>
+</form>
+
+<hr>
+
+<a href="/seccions">
+  Go back
+</a>

@@ -1,0 +1,44 @@
+<!-- Validation failure messages -->
+<% if @asignacion.errors.any? %>
+  <% @asignacion.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit asignacion #<%= @asignacion.id %>
+</h1>
+
+<hr>
+
+<form action="/update_asignacion/<%= @asignacion.id %>" method="post">
+  <!-- Label and input for test_id -->
+  <div class="form-group">
+    <label for="test_id">
+      Test
+    </label>
+
+    <input type="text" id="test_id" name="test_id" class="form-control" value="<%= @asignacion.test_id %>">
+  </div>
+
+  <!-- Label and input for sala_id -->
+  <div class="form-group">
+    <label for="sala_id">
+      Sala
+    </label>
+
+    <input type="text" id="sala_id" name="sala_id" class="form-control" value="<%= @asignacion.sala_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update asignacion
+  </button>
+</form>
+
+<hr>
+
+<a href="/asignacions">
+  Go back
+</a>

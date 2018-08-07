@@ -1,0 +1,77 @@
+Ejercicio avanzar
+<%= session[:record] %>
+<%= @ejercicio.dificultad %>
+
+<div class="container">
+    <div style="height: 50px;">
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-secondary mb-3" style="min-height: 500px;">
+          <h4 class="card-header text-white bg-secondary mb-3"> <i class="fa fa-chart-line fa-1x"></i> Avanzar libre! </h4>
+          
+          <div class="card-body" align="left">
+
+            
+            <!--- presentacion de enunciado (y opciones) --->
+            <h6><%= @ejercicio.pregunta %> </h6>
+            
+            <div style="height: 20px;"> </div>
+            
+            <% if @ejercicio.opcion1 != "" %>
+              <p> <%= @ejercicio.opcion1 %>  </p>
+            <% end %>
+            
+            <% if @ejercicio.opcion2 != "" %>
+              <p> <%= @ejercicio.opcion2 %>  </p>
+            <% end %>
+            
+            <% if @ejercicio.opcion3 != "" %>
+              <p> <%= @ejercicio.opcion3 %>  </p>
+            <% end %>
+            
+            <% if @ejercicio.opcion4 != "" %>
+              <p> <%= @ejercicio.opcion4 %>  </p>
+            <% end %>
+            
+            <% if @ejercicio.opcion5 != "" %>
+              <p> <%= @ejercicio.opcion5 %>  </p>
+            <% end %>
+
+            <div style="height: 25px;">
+            </div>   
+            
+            <h6> Respuestas </h6>
+            
+            <form action="/answers/evaluar_avanzar">
+                <div class="form-group">
+                    <% @allanswers.each do |answ| %>
+                        <div class="radio">
+                          <label><input type="radio" name="user_answer" value= "<%= answ %>"> <%= answ %> </label>
+                        </div>
+                    <% end %>
+                </div>
+                
+                <input type="hidden" name="excercise_id" class="form-control" value="<%= @ejercicio.id %>">
+                <input type="hidden" name="right_answer" class="form-control" value="<%= @rightanswer %>">
+                
+                <button type="submit" class="btn btn-primary mb-2"> Responder </button>
+                
+            </form>
+            
+            <hr class="my-4">
+                
+            <form action="/answers/cerrar">
+            
+                <input type="hidden" name="excercise_id" class="form-control" value="<%= @ejercicio.id %>">
+                <button type="submit" class="btn btn-danger mb-2"> Salir de ejercicios </button>
+                
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+       

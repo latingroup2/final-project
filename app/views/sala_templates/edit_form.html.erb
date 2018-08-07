@@ -1,0 +1,44 @@
+<!-- Validation failure messages -->
+<% if @sala.errors.any? %>
+  <% @sala.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit sala #<%= @sala.id %>
+</h1>
+
+<hr>
+
+<form action="/update_sala/<%= @sala.id %>" method="post">
+  <!-- Label and input for profesor_id -->
+  <div class="form-group">
+    <label for="profesor_id">
+      Profesor
+    </label>
+
+    <input type="text" id="profesor_id" name="profesor_id" class="form-control" value="<%= @sala.profesor_id %>">
+  </div>
+
+  <!-- Label and input for colegio_id -->
+  <div class="form-group">
+    <label for="colegio_id">
+      Colegio
+    </label>
+
+    <input type="text" id="colegio_id" name="colegio_id" class="form-control" value="<%= @sala.colegio_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update sala
+  </button>
+</form>
+
+<hr>
+
+<a href="/salas">
+  Go back
+</a>

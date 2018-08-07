@@ -1,0 +1,80 @@
+<!-- Validation failure messages -->
+<% if @answer.errors.any? %>
+  <% @answer.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit answer #<%= @answer.id %>
+</h1>
+
+<hr>
+
+<form action="/update_answer/<%= @answer.id %>" method="post">
+  <!-- Label and input for right_answer -->
+  <div class="form-group">
+    <label for="right_answer">
+      Right answer
+    </label>
+
+    <textarea id="right_answer" name="right_answer" class="form-control" rows="3"><%= @answer.right_answer %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_1 -->
+  <div class="form-group">
+    <label for="wrong_1">
+      Wrong 1
+    </label>
+
+    <textarea id="wrong_1" name="wrong_1" class="form-control" rows="3"><%= @answer.wrong_1 %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_2 -->
+  <div class="form-group">
+    <label for="wrong_2">
+      Wrong 2
+    </label>
+
+    <textarea id="wrong_2" name="wrong_2" class="form-control" rows="3"><%= @answer.wrong_2 %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_3 -->
+  <div class="form-group">
+    <label for="wrong_3">
+      Wrong 3
+    </label>
+
+    <textarea id="wrong_3" name="wrong_3" class="form-control" rows="3"><%= @answer.wrong_3 %></textarea>
+  </div>
+
+  <!-- Label and input for wrong_4 -->
+  <div class="form-group">
+    <label for="wrong_4">
+      Wrong 4
+    </label>
+
+    <textarea id="wrong_4" name="wrong_4" class="form-control" rows="3"><%= @answer.wrong_4 %></textarea>
+  </div>
+
+  <!-- Label and input for excercise_id -->
+  <div class="form-group">
+    <label for="excercise_id">
+      Excercise
+    </label>
+
+    <input type="text" id="excercise_id" name="excercise_id" class="form-control" value="<%= @answer.excercise_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update answer
+  </button>
+</form>
+
+<hr>
+
+<a href="/answers">
+  Go back
+</a>

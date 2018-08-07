@@ -1,0 +1,49 @@
+<h1>
+  Eje #<%= @eje.id %> details
+</h1>
+
+<a href="/ejes/<%= @eje.id %>/edit">
+  Edit eje
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Materia
+  </dt>
+  <dd>
+    <%= @eje.materia_id %>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%= @eje.description %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@eje.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@eje.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_eje/<%= @eje.id %>">
+  Delete eje
+</a>
+
+<hr>
+
+<a href="/ejes">
+  Go back
+</a>

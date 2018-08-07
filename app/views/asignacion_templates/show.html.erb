@@ -1,0 +1,49 @@
+<h1>
+  Asignacion #<%= @asignacion.id %> details
+</h1>
+
+<a href="/asignacions/<%= @asignacion.id %>/edit">
+  Edit asignacion
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Test
+  </dt>
+  <dd>
+    <%= @asignacion.test_id %>
+  </dd>
+
+  <dt>
+    Sala
+  </dt>
+  <dd>
+    <%= @asignacion.sala_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@asignacion.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@asignacion.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_asignacion/<%= @asignacion.id %>">
+  Delete asignacion
+</a>
+
+<hr>
+
+<a href="/asignacions">
+  Go back
+</a>

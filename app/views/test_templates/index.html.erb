@@ -1,0 +1,57 @@
+
+<div class="container">
+    <div style="height: 50px;">
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-success mb-3" style="min-height: 500px;">
+          <h4 class="card-header text-white bg-success mb-3"> Guías asociadas a mí </h4>
+          
+          <div class="card-body" align="left">
+
+            <table class="table">
+              <tr>
+                <th>
+                  Nombre
+                </th>
+            
+                <th>
+                  Status
+                </th>
+            
+                <th>
+                  Mejor resultado
+                </th>
+            
+              </tr>
+            
+              <% Sala.find(current_user.sala_id).guias.each do |gui| %>
+              
+              <tr>
+                            <td>
+                              <a href= "/ejercitar/com_guia/<%= gui.id %>"> <%= gui.nombre %> </a>
+                            </td>
+                        
+                            <td>
+                              <% if gui.resuelta(current_user.id) %>
+                                  <p style="color:green;"> Resuelta </p>
+                              <% else %>
+                                  <a href="/ejercitar/com_guia/<%= gui.id %>">  Iniciar </a>
+                              <% end %>
+                            </td>
+                              
+                            <td>
+                              <%= gui.mejor_puntaje(current_user.id)[0].round(2)*100 %>%
+                            </td>
+                            
+                          </tr>
+              <% end %>
+            </table>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

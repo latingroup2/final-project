@@ -1,0 +1,37 @@
+<!-- Validation failure messages -->
+<% if @nivel.present? %>
+  <% if @nivel.errors.any? %>
+    <% @nivel.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new nivel
+</h1>
+
+<hr>
+
+<form action="/create_nivel" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @nivel.try(:user_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create nivel
+  </button>
+</form>
+
+<hr>
+
+<a href="/nivels">
+  Go back
+</a>

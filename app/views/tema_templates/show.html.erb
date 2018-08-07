@@ -1,0 +1,42 @@
+<h1>
+  Tema #<%= @tema.id %> details
+</h1>
+
+<a href="/temas/<%= @tema.id %>/edit">
+  Edit tema
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Nombre
+  </dt>
+  <dd>
+    <%= @tema.nombre %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tema.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tema.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_tema/<%= @tema.id %>">
+  Delete tema
+</a>
+
+<hr>
+
+<a href="/temas">
+  Go back
+</a>

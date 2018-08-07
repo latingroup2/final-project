@@ -1,0 +1,56 @@
+<h1>
+  Puntaje #<%= @puntaje.id %> details
+</h1>
+
+<a href="/puntajes/<%= @puntaje.id %>/edit">
+  Edit puntaje
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Nivel
+  </dt>
+  <dd>
+    <%= @puntaje.nivel_id %>
+  </dd>
+
+  <dt>
+    Categoria
+  </dt>
+  <dd>
+    <%= @puntaje.categoria_id %>
+  </dd>
+
+  <dt>
+    Score
+  </dt>
+  <dd>
+    <%= @puntaje.score %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@puntaje.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@puntaje.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_puntaje/<%= @puntaje.id %>">
+  Delete puntaje
+</a>
+
+<hr>
+
+<a href="/puntajes">
+  Go back
+</a>

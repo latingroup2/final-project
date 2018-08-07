@@ -1,0 +1,49 @@
+<h1>
+  Intento test #<%= @intento_test.id %> details
+</h1>
+
+<a href="/intento_tests/<%= @intento_test.id %>/edit">
+  Edit intento test
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Test
+  </dt>
+  <dd>
+    <%= @intento_test.test_id %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @intento_test.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@intento_test.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@intento_test.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_intento_test/<%= @intento_test.id %>">
+  Delete intento test
+</a>
+
+<hr>
+
+<a href="/intento_tests">
+  Go back
+</a>

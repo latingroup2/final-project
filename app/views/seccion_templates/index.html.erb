@@ -1,0 +1,74 @@
+<h1>
+  All seccions
+</h1>
+
+<a href="/seccions/new">
+  Add a new seccion
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Contenido
+    </th>
+
+    <th>
+      Test
+    </th>
+
+    <th>
+      Numero ejercicios
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @seccions.each do |seccion| %>
+  <tr>
+    <td>
+      <%= seccion.id %>
+    </td>
+
+    <td>
+      <%= seccion.contenido_id %>
+    </td>
+
+    <td>
+      <%= seccion.test_id %>
+    </td>
+
+    <td>
+      <%= seccion.numero_ejercicios %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(seccion.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(seccion.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/seccions/<%= seccion.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

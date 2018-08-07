@@ -1,0 +1,56 @@
+<h1>
+  Objetivo #<%= @objetivo.id %> details
+</h1>
+
+<a href="/objetivos/<%= @objetivo.id %>/edit">
+  Edit objetivo
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Eje
+  </dt>
+  <dd>
+    <%= @objetivo.eje_id %>
+  </dd>
+
+  <dt>
+    Descripcion
+  </dt>
+  <dd>
+    <%= @objetivo.descripcion %>
+  </dd>
+
+  <dt>
+    Numeral
+  </dt>
+  <dd>
+    <%= @objetivo.numeral %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@objetivo.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@objetivo.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_objetivo/<%= @objetivo.id %>">
+  Delete objetivo
+</a>
+
+<hr>
+
+<a href="/objetivos">
+  Go back
+</a>

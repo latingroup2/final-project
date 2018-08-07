@@ -1,0 +1,64 @@
+﻿id contenido,Enunciado,id contenido anterior,id contenido siguiente,Nombre categoría,Tema,id tema,id categoría
+1,Multiplicación de Enteros,23,1,Números Enteros,Operatoria de enteros,2,1
+2,Reconocer Números Enteros,1,11,Números Enteros,Introducción al conjunto de los enteros,1,1
+3,Múltiplos,1,4,Números Enteros,Introducción al conjunto de los enteros,1,1
+4,Factores,3,5,Números Enteros,Introducción al conjunto de los enteros,1,1
+5,División de Enteros,1,6,Números Enteros,Operatoria de enteros,2,1
+6,Multiplicación y División de Enteros,5,7,Números Enteros,Operatoria de enteros,2,1
+7,Reducción de Expresiones,6,8,Números Enteros,Operatoria de enteros,2,1
+8,Operatoria Combinada (uso de paréntesis),7,9,Números Enteros,Operatoria de enteros,2,1
+9,Transformar Expresiones del Lenguaje Natural al Matemático y Viceversa,2,10,Números Enteros,Introducción al algebra,3,1
+10,Problemas en la Vida Real,9,11,Números Enteros,Introducción al algebra,3,1
+11,Reconocer el concepto de potencia de exponente y base natural,1,12,Números Enteros,Introducción a las potencias,4,1
+12,Encontrar el resultado de una potencia dada,11,13,Números Enteros,Introducción a las potencias,4,1
+13,Propiedad 1; Multiplicación de potencias con igual base,11,14,Números Enteros,Propiedad de las potencias,5,1
+14,Propiedad 2; Multiplicación de potencias con igual exponente,13,15,Números Enteros,Propiedad de las potencias,5,1
+15,Propiedad 3; División de potencias con igual base,14,16,Números Enteros,Propiedad de las potencias,5,1
+16,Propiedad 4; División de potencias con igual exponente,15,17,Números Enteros,Propiedad de las potencias,5,1
+17,Propiedad 5; Potencia de una Potencia,13,18,Números Enteros,Propiedad de las potencias,5,1
+18,Aplican propiedades de potencias en el desarrollo de ejercicios combinados,17,19,Números Enteros,Problemas de potencias,6,1
+19,Aplican potencias en problemas de la vida cotidiana,18,28,Números Enteros,Problemas de potencias,6,1
+20,Ordenar Enteros en la Recta Numérica,11,21,Números Enteros,Introducción al conjunto de los enteros,1,1
+21,Usar Enteros Negativos como Cambio o Posicionamiento,20,22,Números Enteros,Introducción al conjunto de los enteros,1,1
+22,Adición  y Sustracción de Enteros Positivos,21,23,Números Enteros,Operatoria de enteros,2,1
+23,Adición y Sustracción de Enteros Negativos,22,23,Números Enteros,Operatoria de enteros,2,1
+24,"Identificar, reconocer y representar  Números Racionales (concreta, pictórica y sombólica)",2,25,Números Racionales,Introducción a los racionales,7,2
+25,Identificar a que conjunto numérico corresponden las soluciones de diversos ejercicios,24,26,Números Racionales,Introducción a los racionales,7,2
+26,Identifican y representan fracciones propias,24,27,Números Racionales,Introducción a los racionales,7,2
+27,Identifican y representan fracciones impropias,26,59,Números Racionales,Introducción a los racionales,7,2
+28,Identificar valor posicional de los decimales,24,29,Números Racionales,Aproximar números racionales,11,2
+29,Traspasar de Decimla Finito a Fracción (y viceversa),28,30,Números Racionales,Representar fracciones como decimales y viceversa,10,2
+30,Traspasar de Decimla Infinito Periódico a Fracción (y viceversa),29,31,Números Racionales,Representar fracciones como decimales y viceversa,10,2
+31,Traspasar de Decimla Infinito Semiperiódico a Fracción (y viceversa),30,32,Números Racionales,Representar fracciones como decimales y viceversa,10,2
+32,Aproximar Números Racionales,31,33,Números Racionales,Aproximar números racionales,11,2
+33,Adición y Sustracción de Decimales,28,34,Números Racionales,Operatoria de racionales,12,2
+34,Adición y Sustracción de Racionales,33,35,Números Racionales,Operatoria de racionales,12,2
+35,Propiedad Asociativa,34,36,Números Racionales,Propiedades de los racionales,13,2
+36,Propiedad Conmutativa,35,37,Números Racionales,Propiedades de los racionales,13,2
+37,Elemento Neutro,36,38,Números Racionales,Propiedades de los racionales,13,2
+38,Elemento Opuesto,37,39,Números Racionales,Propiedades de los racionales,13,2
+39,Ordenar Racionales en Recta Numérica,28,40,Números Racionales,Comparar racionales,14,2
+40,Establecer relaciones de orden entre números racionales,39,41,Números Racionales,Comparar racionales,14,2
+41,Multiplicación  de Fracciones,63,42,Números Racionales,Operatoria de fracciones,9,2
+42,División de Fracciones,41,43,Números Racionales,Operatoria de fracciones,9,2
+43,Multiplicación de Decimales,33,44,Números Racionales,Operatoria de racionales,12,2
+44,División de Decimales,43,45,Números Racionales,Operatoria de racionales,12,2
+45,Reducción de Expresiones,44,46,Números Racionales,Operatoria de racionales,12,2
+46,Operatoria Combinada,45,47,Números Racionales,Operatoria de racionales,12,2
+47,Transformar Expresiones del lenguaje Natural al Matemático y Viceversa,9,48,Números Racionales,Introducción al álgebra,15,2
+48,Problemas en la Vida Real,47,49,Números Racionales,Introducción al álgebra,15,2
+49,Reconocer el concepto de potencia de exponente natural y base racional,11,50,Números Racionales,Introducción a las potencias,16,2
+50,Encontrar el resultado de una potencia dada,49,51,Números Racionales,Introducción a las potencias,16,2
+51,Propiedad 1; Multiplicación de potencias con igual base,50,52,Números Racionales,Propiedades de las potencias,17,2
+52,Propiedad 2; Multiplicación de potencias con igual exponente,51,53,Números Racionales,Propiedades de las potencias,17,2
+53,Propiedad 3; División de potencias con igual base,52,54,Números Racionales,Propiedades de las potencias,17,2
+54,Propiedad 4; División de potencias con igual exponente,53,55,Números Racionales,Propiedades de las potencias,17,2
+55,Propiedad 5; Potencia de una Potencia,54,56,Números Racionales,Propiedades de las potencias,17,2
+56,Aplican propiedades de potencias en el desarrollo de ejercicios combinados,55,57,Números Racionales,Problemas de potencias,18,2
+57,Aplican potencias en problemas de la vida cotidiana,56,58,Números Racionales,Problemas de potencias,18,2
+58,Aplicar potencias a problemas de crecimiento y decrecimiento exponencial,57,58,Números Racionales,Problemas de potencias,18,2
+59,Expresan números mixtos como fracciones impropias,58,60,Números Racionales,Representación de fracciones,8,2
+60,"Identifican y representan en la recta fracciones propias, impropias y números mixtos",59,61,Números Racionales,Representación de fracciones,8,2
+61,Aplican estrategias para encontrar fracciones equivalentes,60,62,Números Racionales,Representación de fracciones,8,2
+62,Mínimo Común Múltiplo,3,63,Números Racionales,Operatoria de fracciones,9,2
+63,Adición y Sustracción de Fracciones (igual y distinto denominador),62,28,Números Racionales,Operatoria de fracciones,9,2

@@ -1,0 +1,62 @@
+<!-- Validation failure messages -->
+<% if @tributo.errors.any? %>
+  <% @tributo.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit tributo #<%= @tributo.id %>
+</h1>
+
+<hr>
+
+<form action="/update_tributo/<%= @tributo.id %>" method="post">
+  <!-- Label and input for contenido_name -->
+  <div class="form-group">
+    <label for="contenido_name">
+      Contenido name
+    </label>
+
+    <textarea id="contenido_name" name="contenido_name" class="form-control" rows="3"><%= @tributo.contenido_name %></textarea>
+  </div>
+
+  <!-- Label and input for contenido_id -->
+  <div class="form-group">
+    <label for="contenido_id">
+      Contenido
+    </label>
+
+    <input type="text" id="contenido_id" name="contenido_id" class="form-control" value="<%= @tributo.contenido_id %>">
+  </div>
+
+  <!-- Label and input for indicador_name -->
+  <div class="form-group">
+    <label for="indicador_name">
+      Indicador name
+    </label>
+
+    <textarea id="indicador_name" name="indicador_name" class="form-control" rows="3"><%= @tributo.indicador_name %></textarea>
+  </div>
+
+  <!-- Label and input for indicador_id -->
+  <div class="form-group">
+    <label for="indicador_id">
+      Indicador
+    </label>
+
+    <input type="text" id="indicador_id" name="indicador_id" class="form-control" value="<%= @tributo.indicador_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update tributo
+  </button>
+</form>
+
+<hr>
+
+<a href="/tributos">
+  Go back
+</a>

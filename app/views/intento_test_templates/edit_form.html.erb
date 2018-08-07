@@ -1,0 +1,44 @@
+<!-- Validation failure messages -->
+<% if @intento_test.errors.any? %>
+  <% @intento_test.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit intento test #<%= @intento_test.id %>
+</h1>
+
+<hr>
+
+<form action="/update_intento_test/<%= @intento_test.id %>" method="post">
+  <!-- Label and input for test_id -->
+  <div class="form-group">
+    <label for="test_id">
+      Test
+    </label>
+
+    <input type="text" id="test_id" name="test_id" class="form-control" value="<%= @intento_test.test_id %>">
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @intento_test.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update intento test
+  </button>
+</form>
+
+<hr>
+
+<a href="/intento_tests">
+  Go back
+</a>

@@ -1,0 +1,77 @@
+<h1>
+  Answer #<%= @answer.id %> details
+</h1>
+
+<a href="/answers/<%= @answer.id %>/edit">
+  Edit answer
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Right answer
+  </dt>
+  <dd>
+    <%= @answer.right_answer %>
+  </dd>
+
+  <dt>
+    Wrong 1
+  </dt>
+  <dd>
+    <%= @answer.wrong_1 %>
+  </dd>
+
+  <dt>
+    Wrong 2
+  </dt>
+  <dd>
+    <%= @answer.wrong_2 %>
+  </dd>
+
+  <dt>
+    Wrong 3
+  </dt>
+  <dd>
+    <%= @answer.wrong_3 %>
+  </dd>
+
+  <dt>
+    Wrong 4
+  </dt>
+  <dd>
+    <%= @answer.wrong_4 %>
+  </dd>
+
+  <dt>
+    Excercise
+  </dt>
+  <dd>
+    <%= @answer.excercise_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@answer.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@answer.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_answer/<%= @answer.id %>">
+  Delete answer
+</a>
+
+<hr>
+
+<a href="/answers">
+  Go back
+</a>

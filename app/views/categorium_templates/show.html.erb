@@ -1,0 +1,49 @@
+<h1>
+  Categorium #<%= @categorium.id %> details
+</h1>
+
+<a href="/categoria/<%= @categorium.id %>/edit">
+  Edit categorium
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Descripcion
+  </dt>
+  <dd>
+    <%= @categorium.descripcion %>
+  </dd>
+
+  <dt>
+    Eje
+  </dt>
+  <dd>
+    <%= @categorium.eje_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@categorium.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@categorium.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_categorium/<%= @categorium.id %>">
+  Delete categorium
+</a>
+
+<hr>
+
+<a href="/categoria">
+  Go back
+</a>

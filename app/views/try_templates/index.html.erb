@@ -1,0 +1,98 @@
+<h1>
+  All tries
+</h1>
+
+<a href="/tries/new">
+  Add a new try
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Excercise
+    </th>
+
+    <th>
+      User answer
+    </th>
+
+    <th>
+      Correct
+    </th>
+
+    <th>
+      Active
+    </th>
+
+    <th>
+      Intento guia
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @tries.each do |try| %>
+  <tr>
+    <td>
+      <%= try.id %>
+    </td>
+
+    <td>
+      <%= try.user_id %>
+    </td>
+
+    <td>
+      <%= try.excercise_id %>
+    </td>
+
+    <td>
+      <%= try.user_answer %>
+    </td>
+
+    <td>
+      <%= try.correct %>
+    </td>
+
+    <td>
+      <%= try.active %>
+    </td>
+
+    <td>
+      <%= try.intento_guia_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(try.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(try.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/tries/<%= try.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

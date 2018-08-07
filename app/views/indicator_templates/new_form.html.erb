@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @indicator.present? %>
+  <% if @indicator.errors.any? %>
+    <% @indicator.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new indicator
+</h1>
+
+<hr>
+
+<form action="/create_indicator" method="post">
+  <!-- Label and input for objetivo_id -->
+  <div class="form-group">
+    <label for="objetivo_id">
+      Objetivo
+    </label>
+
+    <input type="text" id="objetivo_id" name="objetivo_id" class="form-control" value="<%= @indicator.try(:objetivo_id) %>">
+  </div>
+
+  <!-- Label and input for descripcion -->
+  <div class="form-group">
+    <label for="descripcion">
+      Descripcion
+    </label>
+
+    <textarea id="descripcion" name="descripcion" class="form-control" rows="3"><%= @indicator.try(:descripcion) %></textarea>
+  </div>
+
+  <!-- Label and input for numeral -->
+  <div class="form-group">
+    <label for="numeral">
+      Numeral
+    </label>
+
+    <input type="text" id="numeral" name="numeral" class="form-control" value="<%= @indicator.try(:numeral) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create indicator
+  </button>
+</form>
+
+<hr>
+
+<a href="/indicators">
+  Go back
+</a>

@@ -1,0 +1,37 @@
+<!-- Validation failure messages -->
+<% if @test.present? %>
+  <% if @test.errors.any? %>
+    <% @test.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new test
+</h1>
+
+<hr>
+
+<form action="/create_test" method="post">
+  <!-- Label and input for profesor_id -->
+  <div class="form-group">
+    <label for="profesor_id">
+      Profesor
+    </label>
+
+    <input type="text" id="profesor_id" name="profesor_id" class="form-control" value="<%= @test.try(:profesor_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create test
+  </button>
+</form>
+
+<hr>
+
+<a href="/tests">
+  Go back
+</a>

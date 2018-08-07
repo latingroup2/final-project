@@ -1,0 +1,80 @@
+<% if current_profesor != nil %>
+  
+  <div class="container">
+    
+    <div style="height: 10px;"></div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-primary mb-3" style="min-height: 500px;">
+          <h4 class="card-header text-white bg-primary mb-3"> <i class= "fas fa-file-signature" ></i> Cursos </h4>
+          
+          <div class="card-body" align="left">
+            
+            <table class="table">
+              <tr>
+                <th>
+                  Curso
+                </th>
+            
+                <th>
+                  # Alumnos
+                </th>
+                
+                <th>
+                  Guías asociadas
+                </th>
+                
+                <th>
+                </th>
+                
+              </tr>
+              
+              
+              <% if current_profesor.salas.last != nil %>
+                <% current_profesor.salas.each do |sala| %>
+                  
+                  <tr>
+                    <td>
+                      <a href= "/salas/<%= sala.id %>"> <%= sala.nombre %> </a>
+                    </td>
+                    
+                    <td>
+                      <% if sala.users.last != nil %>
+                          <% n = 0 %>
+                          <%= sala.users.count %>  
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                    
+                    <td>
+                      <% if sala.guias.last != nil %>
+                          <ul>
+                          <% sala.guias.each do |guia| %>
+                            <li> <%= guia.nombre %> </li>
+                          <% end %>  
+                          </ul>
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                      
+                    <td> <a href = "/salas/<%= sala.id %>" class="btn btn-warning btn-block"> Gestionar </a></td>
+                    
+                  </tr>
+                
+                <% end %>
+              <% end %>
+            </table>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div style="height: 10px;"></div>
+    
+  </div>
+<% end %>  

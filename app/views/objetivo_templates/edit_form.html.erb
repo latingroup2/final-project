@@ -1,0 +1,53 @@
+<!-- Validation failure messages -->
+<% if @objetivo.errors.any? %>
+  <% @objetivo.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit objetivo #<%= @objetivo.id %>
+</h1>
+
+<hr>
+
+<form action="/update_objetivo/<%= @objetivo.id %>" method="post">
+  <!-- Label and input for eje_id -->
+  <div class="form-group">
+    <label for="eje_id">
+      Eje
+    </label>
+
+    <input type="text" id="eje_id" name="eje_id" class="form-control" value="<%= @objetivo.eje_id %>">
+  </div>
+
+  <!-- Label and input for descripcion -->
+  <div class="form-group">
+    <label for="descripcion">
+      Descripcion
+    </label>
+
+    <textarea id="descripcion" name="descripcion" class="form-control" rows="3"><%= @objetivo.descripcion %></textarea>
+  </div>
+
+  <!-- Label and input for numeral -->
+  <div class="form-group">
+    <label for="numeral">
+      Numeral
+    </label>
+
+    <input type="text" id="numeral" name="numeral" class="form-control" value="<%= @objetivo.numeral %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update objetivo
+  </button>
+</form>
+
+<hr>
+
+<a href="/objetivos">
+  Go back
+</a>

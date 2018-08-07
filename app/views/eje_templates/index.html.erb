@@ -1,0 +1,66 @@
+<h1>
+  All ejes
+</h1>
+
+<a href="/ejes/new">
+  Add a new eje
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Materia
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @ejes.each do |eje| %>
+  <tr>
+    <td>
+      <%= eje.id %>
+    </td>
+
+    <td>
+      <%= eje.materia_id %>
+    </td>
+
+    <td>
+      <%= eje.description %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(eje.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(eje.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/ejes/<%= eje.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

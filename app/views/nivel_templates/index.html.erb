@@ -1,0 +1,58 @@
+<h1>
+  All nivels
+</h1>
+
+<a href="/nivels/new">
+  Add a new nivel
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @nivels.each do |nivel| %>
+  <tr>
+    <td>
+      <%= nivel.id %>
+    </td>
+
+    <td>
+      <%= nivel.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(nivel.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(nivel.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/nivels/<%= nivel.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

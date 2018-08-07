@@ -1,0 +1,56 @@
+<h1>
+  Indicator #<%= @indicator.id %> details
+</h1>
+
+<a href="/indicators/<%= @indicator.id %>/edit">
+  Edit indicator
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Objetivo
+  </dt>
+  <dd>
+    <%= @indicator.objetivo_id %>
+  </dd>
+
+  <dt>
+    Descripcion
+  </dt>
+  <dd>
+    <%= @indicator.descripcion %>
+  </dd>
+
+  <dt>
+    Numeral
+  </dt>
+  <dd>
+    <%= @indicator.numeral %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@indicator.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@indicator.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_indicator/<%= @indicator.id %>">
+  Delete indicator
+</a>
+
+<hr>
+
+<a href="/indicators">
+  Go back
+</a>

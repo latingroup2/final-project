@@ -1,0 +1,62 @@
+<!-- Validation failure messages -->
+<% if @contenido.errors.any? %>
+  <% @contenido.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit contenido #<%= @contenido.id %>
+</h1>
+
+<hr>
+
+<form action="/update_contenido/<%= @contenido.id %>" method="post">
+  <!-- Label and input for nombre -->
+  <div class="form-group">
+    <label for="nombre">
+      Nombre
+    </label>
+
+    <textarea id="nombre" name="nombre" class="form-control" rows="3"><%= @contenido.nombre %></textarea>
+  </div>
+
+  <!-- Label and input for anterior -->
+  <div class="form-group">
+    <label for="anterior">
+      Anterior
+    </label>
+
+    <input type="text" id="anterior" name="anterior" class="form-control" value="<%= @contenido.anterior %>">
+  </div>
+
+  <!-- Label and input for siguiente -->
+  <div class="form-group">
+    <label for="siguiente">
+      Siguiente
+    </label>
+
+    <input type="text" id="siguiente" name="siguiente" class="form-control" value="<%= @contenido.siguiente %>">
+  </div>
+
+  <!-- Label and input for categoria_id -->
+  <div class="form-group">
+    <label for="categoria_id">
+      Categoria
+    </label>
+
+    <input type="text" id="categoria_id" name="categoria_id" class="form-control" value="<%= @contenido.categoria_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update contenido
+  </button>
+</form>
+
+<hr>
+
+<a href="/contenidos">
+  Go back
+</a>

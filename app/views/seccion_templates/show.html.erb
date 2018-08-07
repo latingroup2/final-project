@@ -1,0 +1,56 @@
+<h1>
+  Seccion #<%= @seccion.id %> details
+</h1>
+
+<a href="/seccions/<%= @seccion.id %>/edit">
+  Edit seccion
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Contenido
+  </dt>
+  <dd>
+    <%= @seccion.contenido_id %>
+  </dd>
+
+  <dt>
+    Test
+  </dt>
+  <dd>
+    <%= @seccion.test_id %>
+  </dd>
+
+  <dt>
+    Numero ejercicios
+  </dt>
+  <dd>
+    <%= @seccion.numero_ejercicios %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@seccion.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@seccion.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_seccion/<%= @seccion.id %>">
+  Delete seccion
+</a>
+
+<hr>
+
+<a href="/seccions">
+  Go back
+</a>

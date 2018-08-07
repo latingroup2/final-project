@@ -1,0 +1,58 @@
+<h1>
+  All colegios
+</h1>
+
+<a href="/colegios/new">
+  Add a new colegio
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Nombre
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @colegios.each do |colegio| %>
+  <tr>
+    <td>
+      <%= colegio.id %>
+    </td>
+
+    <td>
+      <%= colegio.nombre %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(colegio.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(colegio.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/colegios/<%= colegio.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

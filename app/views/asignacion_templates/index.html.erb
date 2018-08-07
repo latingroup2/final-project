@@ -1,0 +1,66 @@
+<h1>
+  All asignacions
+</h1>
+
+<a href="/asignacions/new">
+  Add a new asignacion
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Test
+    </th>
+
+    <th>
+      Sala
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @asignacions.each do |asignacion| %>
+  <tr>
+    <td>
+      <%= asignacion.id %>
+    </td>
+
+    <td>
+      <%= asignacion.test_id %>
+    </td>
+
+    <td>
+      <%= asignacion.sala_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(asignacion.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(asignacion.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/asignacions/<%= asignacion.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

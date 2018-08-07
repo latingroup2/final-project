@@ -1,0 +1,63 @@
+<h1>
+  Tributo #<%= @tributo.id %> details
+</h1>
+
+<a href="/tributos/<%= @tributo.id %>/edit">
+  Edit tributo
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Contenido name
+  </dt>
+  <dd>
+    <%= @tributo.contenido_name %>
+  </dd>
+
+  <dt>
+    Contenido
+  </dt>
+  <dd>
+    <%= @tributo.contenido_id %>
+  </dd>
+
+  <dt>
+    Indicador name
+  </dt>
+  <dd>
+    <%= @tributo.indicador_name %>
+  </dd>
+
+  <dt>
+    Indicador
+  </dt>
+  <dd>
+    <%= @tributo.indicador_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tributo.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@tributo.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_tributo/<%= @tributo.id %>">
+  Delete tributo
+</a>
+
+<hr>
+
+<a href="/tributos">
+  Go back
+</a>

@@ -1,0 +1,77 @@
+<h1>
+  Try #<%= @try.id %> details
+</h1>
+
+<a href="/tries/<%= @try.id %>/edit">
+  Edit try
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @try.user_id %>
+  </dd>
+
+  <dt>
+    Excercise
+  </dt>
+  <dd>
+    <%= @try.excercise_id %>
+  </dd>
+
+  <dt>
+    User answer
+  </dt>
+  <dd>
+    <%= @try.user_answer %>
+  </dd>
+
+  <dt>
+    Correct
+  </dt>
+  <dd>
+    <%= @try.correct %>
+  </dd>
+
+  <dt>
+    Active
+  </dt>
+  <dd>
+    <%= @try.active %>
+  </dd>
+
+  <dt>
+    Intento guia
+  </dt>
+  <dd>
+    <%= @try.intento_guia_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@try.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@try.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_try/<%= @try.id %>">
+  Delete try
+</a>
+
+<hr>
+
+<a href="/tries">
+  Go back
+</a>

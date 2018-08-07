@@ -1,0 +1,402 @@
+<!--- vista profe --->
+<% if current_profesor != nil %>
+  <div class="container">
+    <div style="height: 10px;"></div>
+    
+    <!--- Monitoreo --->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-warning mb-12">
+          <h4 class="card-header text-white bg-warning mb-3"> <i class= "fas fa-futbol" ></i> Monitoreo en linea! </h4>
+          <div class="card-body" align="left">
+       
+            <div>
+              <a href="/ejercicios" class="btn btn-secondary btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                    ir
+              </a>
+            </div> 
+            
+            
+          </div>
+        
+        </div>
+
+      </div>
+    </div>
+    
+    <div style="height: 10px;"></div>
+    
+    <div class="row">
+      <!--- Cursos --->
+      <div class="col-md-6">
+        <div class="card border-primary mb-3" style="min-height: 500px; height:100%;">
+          <h4 class="card-header text-white bg-primary mb-3"> <i class="fa fa-chart-line fa-1x" style="color:primary"></i> Cursos </h4>
+          
+          <div class="card-body" align="left">
+            
+            <% if current_profesor.salas.last != nil %>
+            <div>
+              <a href="/salas_prof" class="btn btn-primary btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                  Gestionar Cursos
+              </a>
+            </div>
+            
+            <% else %>
+              <tr> <i style="color:gray; font-size:100%;"> <i></i>No tienes Cursos asignados. </i></tr>
+            <% end %>
+
+            <div style="height: 20px;"></div>
+            
+            <h6> Resumen </h6>
+            <table class="table">
+              <tr>
+                <th>
+                  Curso
+                </th>
+            
+                <th>
+                  Alumnos
+                </th>
+            
+                <th>
+                  Guías
+                </th>
+            
+              </tr>
+              
+              
+              <% if current_profesor.salas.last != nil %>
+                <% current_profesor.salas.each do |sala| %>
+                <tr>
+                  <td>
+                    <a href="/salas/<%= sala.id%>"><%= sala.nombre %> </a>
+                  </td>
+              
+                  <td>
+                    <%= sala.users.count %>
+                  </td>
+              
+                  <td>
+                    <ul>
+                      <% sala.guias.each do |guia| %>
+                        <li> <%= guia.nombre %> </li>
+                      <% end %>
+                    </ul>
+                  </td>
+                </tr>
+                <% end %>
+              <% end %>
+
+            </table>
+            
+          </div>
+        </div>
+      </div>
+      <!--- Guias --->
+      <div class="col-md-6">
+        <div class="card border-success mb-3" style="min-height: 500px; height:100%;">
+          <h4 class="card-header text-white bg-success mb-3"> <i class= "fas fa-file-signature" ></i> Guías </h4>
+          
+          <div class="card-body" align="left">
+            
+            <div>
+              <a href="/tests_prof" class="btn btn-success btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                  Gestionar Guías
+              </a>
+            </div>
+            
+            <div style="height: 20px;"></div>
+
+            <table class="table">
+              <tr>
+                <th>
+                  Nombre Guía
+                </th>
+            
+                <th>
+                  Contenidos
+                </th>
+            
+                <th>
+                  # ejercicios
+                </th>
+              </tr>
+              
+              
+              <% if current_profesor.tests.last != nil %>
+                <% current_profesor.tests.each do |gui| %>
+                  
+                  <tr>
+                    <td>
+                      <a href= "/tests/<%= gui.id %>/edit"> <%= gui.nombre %> </a>
+                    </td>
+                
+                    <td>
+                      <% if gui.seccions.last != nil %>
+                          <ul>
+                          <% gui.seccions.each do |sec| %>
+                            <li> <%= sec.nombre %> </li>
+                          <% end %>  
+                          </ul>
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                      
+                    <td>
+                      <% if gui.seccions.last != nil %>
+                          <% n = 0 %>
+                          <% gui.seccions.each do |sec| %>
+                            <% n = n+sec.numero_ejercicios %> 
+                          <% end %>  
+                          <p >  <%= n %> </p>
+                      <% else %>
+                          <p >  S/I </p>
+                      <% end %>
+                    </td>
+                    
+                  </tr>
+                
+                <% end %>
+              <% else %>
+                  <tr>   <i>No tienes guías asociadas a tus cursos. </i></tr>
+              <% end %>
+            </table>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+<!--- vista no-loggeado --->
+<% elsif current_user == nil %>
+  <div class="container">
+    <div style="height: 100px;">
+    </div>
+    
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card" style="height: 500px;">
+          <div class="card-title">
+          </div>
+          
+          <div class="card-body" align="center">
+            <div style="height: 50px;">
+            </div>
+            
+            <div>
+              <i class="fas fa-calculator fa-10x"></i>
+            </div>
+            
+            <div style="height: 100px;">
+            </div>
+            
+            <div>
+              <a href="/users/sign_in/" class="btn btn-primary btn-block" align="bottom">
+                
+                  Inicia sesión para empezar a ejercitar
+              </a>
+            </div>
+            
+            <div style="height: 10px;">
+            </div>            
+            
+            <div>
+              <a href="/profesors/sign_in/" class="btn btn-warning btn-block" align="bottom">
+                
+                  Ingreso como profesor
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--- vista alumno --->
+<% else %>
+<% plazo = 1 %>
+  <div class="container">
+    <div style="height: 50px;">
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card border-primary mb-3" style="height: 500px; max-width: 25rem;">
+          <h4 class="card-header text-white bg-primary mb-3"> <i class="fa fa-chart-line fa-1x" style="color:primary"></i> Progreso </h4>
+          
+          <div class="card-body" align="left">
+            
+            <h6> Cómo vamos? </h6>
+            <table class="table">
+              <tr>
+                <th>
+                  Materia
+                </th>
+            
+                <th>
+                  Nivel
+                </th>
+            
+                <th>
+                  Mejora (24hr)
+                </th>
+            
+              </tr>
+              
+              
+              <% if current_user.nivels.last != nil %>
+                <% current_user.nivels.last.puntajes.each do |pun| %>
+                <tr>
+                  <td>
+                    <%= Categorium.find(pun.categoria_id).descripcion %>
+                  </td>
+              
+                  <td>
+                    <%= pun.score %>
+                  </td>
+              
+                  <td>
+                    <% if Nivel.ultimo_nivel(current_user.id, plazo) == nil %>
+                      <% p_inicial = 0 %>
+                    <% else %>
+                      <% p_inicial = Nivel.ultimo_nivel(current_user, plazo).puntajes.where(categoria_id: pun.categoria_id).last.score %>
+                    <% end %>
+                    
+                    <% if Nivel.ultimo_nivel(current_user.id, 0) == nil %>
+                      <% p_actual = 0 %>
+                      NA
+                    <% else %>
+                      <% p_actual = current_user.nivels.last.puntajes.where(categoria_id: pun.categoria_id).last.score %>
+                      <%= p_actual - p_inicial %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              <% end %>
+
+            </table>
+            
+            <% if current_user.nivels.last != nil %>
+              <div>
+                <a href="/nivels/<%= current_user.nivels.last.id %>" class="btn btn-primary btn-block" align="bottom">
+                  <i class="fa fa-fw fa-plus" ></i>
+                    Ve el detalle de tus puntajes
+                </a>
+              </div>
+            <% else %>
+              <tr style="text-align:center;"> <i style="text-align:center; color:gray; font-size:100%;"> <i></i>Empieza a hacer ejercicios y haz seguimiento a tu mejora semanal en esta sección. </i></tr>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card border-success mb-3" style="height: 500px; max-width: 25rem;">
+          <h4 class="card-header text-white bg-success mb-3"> <i class= "fas fa-file-signature" ></i> Guías asignadas </h4>
+          
+          <div class="card-body" align="left">
+            <h6> Guías asociadas </h6>
+            
+            <table class="table">
+              <tr>
+                <th>
+                  Nombre Guía
+                </th>
+            
+                <th>
+                  Status
+                </th>
+            
+                <th>
+                  Mejor Resultado
+                </th>
+              </tr>
+              
+              
+              <% if Sala.find(current_user.sala_id).guias.last != nil %>
+                <% Sala.find(current_user.sala_id).guias.each do |gui| %>
+                  
+                  <tr>
+                    <td>
+                      <a href= "/ejercitar/com_guia/<%= gui.id %>"> <%= gui.nombre %> </a>
+                    </td>
+                
+                    <td>
+                      <% if gui.resuelta(current_user.id) %>
+                          <p style="color:green;"> Resuelta </p>
+                      <% else %>
+                          <a href="/ejercitar/com_guia/<%= gui.id %>">  Iniciar </a>
+                      <% end %>
+                    </td>
+                      
+                    <td>
+                      <%= gui.mejor_puntaje(current_user.id)[0].round(2)*100 %>%
+                    </td>
+                    
+                  </tr>
+                
+                <% end %>
+              <% end %>
+            </table>
+            
+            <% if Sala.find(current_user.sala_id).guias.last != nil %>
+            <div>
+              <a href="/tests" class="btn btn-success btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                  Ver guías en página completa
+              </a>
+            </div>
+            <% else %>
+              <tr> <i style="color:gray; font-size:100%;"> <i></i>No tienes guías asociadas a tu curso. </i></tr>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card border-warning mb-3" style="height: 500px; max-width: 25rem;">
+          <h4 class="card-header text-white bg-warning mb-3"> <i class= "fas fa-futbol" ></i> Ejercicios libres! </h4>
+          
+          <div class="card-body" align="left">
+       
+            <div>
+              <h6> Contenido específico </h6>
+              <p> <small><em> En esta sección puedes ejercitar un contenido a tu elección, resolviendo ejercicios de dificultad creciente. </em></small> </p>
+                  
+              <a href="/contenidos/especifico" class="btn btn-secondary btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                    Elegir contenido!
+              </a>
+            </div> 
+            
+            <div style="height: 30px;">
+            </div>
+            
+            <div>
+              <h6> Progreso individual </h6>
+              <p> <small><em> En esta sección puedes progresar a tu ritmo, avanzando a contenidos más avanzados en la medida que domines los ejercicios del tema anterior. </em></small> </p>
+              
+              <a href="/contenidos/avanzar" class="btn btn-secondary btn-block" align="bottom">
+                <i class="fa fa-fw fa-plus" ></i>
+                  Empezar a avanzar!
+              </a>
+            </div>
+          </div>
+        
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  
+<% end %>
+

@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @try.errors.any? %>
+  <% @try.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit try #<%= @try.id %>
+</h1>
+
+<hr>
+
+<form action="/update_try/<%= @try.id %>" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @try.user_id %>">
+  </div>
+
+  <!-- Label and input for excercise_id -->
+  <div class="form-group">
+    <label for="excercise_id">
+      Excercise
+    </label>
+
+    <input type="text" id="excercise_id" name="excercise_id" class="form-control" value="<%= @try.excercise_id %>">
+  </div>
+
+  <!-- Label and input for user_answer -->
+  <div class="form-group">
+    <label for="user_answer">
+      User answer
+    </label>
+
+    <input type="text" id="user_answer" name="user_answer" class="form-control" value="<%= @try.user_answer %>">
+  </div>
+
+  <!-- Label and input for correct -->
+  <div class="form-check">
+    <input type="hidden" value="0" name="correct">
+    <input id="correct" class="form-check-input" name="correct" type="checkbox" value="1" <%= "checked" if @try.correct %>>
+
+    <label for="correct" class="form-check-label">
+      Correct
+    </label>
+  </div>
+
+  <!-- Label and input for active -->
+  <div class="form-check">
+    <input type="hidden" value="0" name="active">
+    <input id="active" class="form-check-input" name="active" type="checkbox" value="1" <%= "checked" if @try.active %>>
+
+    <label for="active" class="form-check-label">
+      Active
+    </label>
+  </div>
+
+  <!-- Label and input for intento_guia_id -->
+  <div class="form-group">
+    <label for="intento_guia_id">
+      Intento guia
+    </label>
+
+    <input type="text" id="intento_guia_id" name="intento_guia_id" class="form-control" value="<%= @try.intento_guia_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update try
+  </button>
+</form>
+
+<hr>
+
+<a href="/tries">
+  Go back
+</a>

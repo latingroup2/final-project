@@ -1,0 +1,53 @@
+<!-- Validation failure messages -->
+<% if @puntaje.errors.any? %>
+  <% @puntaje.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit puntaje #<%= @puntaje.id %>
+</h1>
+
+<hr>
+
+<form action="/update_puntaje/<%= @puntaje.id %>" method="post">
+  <!-- Label and input for nivel_id -->
+  <div class="form-group">
+    <label for="nivel_id">
+      Nivel
+    </label>
+
+    <input type="text" id="nivel_id" name="nivel_id" class="form-control" value="<%= @puntaje.nivel_id %>">
+  </div>
+
+  <!-- Label and input for categoria_id -->
+  <div class="form-group">
+    <label for="categoria_id">
+      Categoria
+    </label>
+
+    <input type="text" id="categoria_id" name="categoria_id" class="form-control" value="<%= @puntaje.categoria_id %>">
+  </div>
+
+  <!-- Label and input for score -->
+  <div class="form-group">
+    <label for="score">
+      Score
+    </label>
+
+    <input type="text" id="score" name="score" class="form-control" value="<%= @puntaje.score %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update puntaje
+  </button>
+</form>
+
+<hr>
+
+<a href="/puntajes">
+  Go back
+</a>

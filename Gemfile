@@ -8,8 +8,19 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development do
+   gem "sqlite3"
+ end
+
+# Added to allow deployment in Heroku
+
+group :production do
+   gem "pg"
+   gem "rails_12factor"
+ end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -23,6 +34,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
