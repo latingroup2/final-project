@@ -1,4 +1,4 @@
-﻿id contenido,Enunciado,id contenido anterior,id contenido siguiente,Nombre categoría,Tema,id tema,id categoría
+id contenido,Enunciado,id contenido anterior,id contenido siguiente,Nombre categoría,Tema,id tema,id categoría
 1,Multiplicación de Enteros,23,1,Números Enteros,Operatoria de enteros,2,1
 2,Reconocer Números Enteros,1,11,Números Enteros,Introducción al conjunto de los enteros,1,1
 3,Múltiplos,1,4,Números Enteros,Introducción al conjunto de los enteros,1,1

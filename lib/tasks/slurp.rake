@@ -154,7 +154,7 @@ namespace :slurp do
   task nivel_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios.csv"))
+    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios3.csv"))
     csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
     
     csv.each do |row|
@@ -176,5 +176,29 @@ namespace :slurp do
     puts "There are now #{Nivel.count} rows in the Nivel table, and #{Puntaje.count} rows in the Puntaje table"
   end
   
+  task niveles: :environment do
+  require "csv"
+
+    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios3.csv"))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+    
+    csv.each do |row|
+      u = User.find(row["user_id"])  
+      n = Nivel.new
+      n.user_id = u.id
+      n.save
+      
+      Categorium.all.each do |cat|
+            p=Puntaje.new
+            p.categoria_id = cat.id
+            p.nivel_id = n.id
+            p.score= u.pinicial
+            p.save
+      end
+      
+    end
+    
+    puts "There are now #{Nivel.count} rows in the Nivel table, and #{Puntaje.count} rows in the Puntaje table"
+  end
   
 end
