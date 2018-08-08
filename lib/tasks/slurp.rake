@@ -136,10 +136,11 @@ namespace :slurp do
   task load_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios.csv"))
+    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios3.csv"))
     csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
     
     csv.each do |row|
+      puts(row["EMAIL"], row["NOMBRE"], "hola")
       u = User.create!({:email => row["EMAIL"], :password => row["PASSWORD"], :password_confirmation => row["PASSWORD"]})  
       u.first_name = row["NOMBRE"]
       u.last_name = row["APELLIDO"]
