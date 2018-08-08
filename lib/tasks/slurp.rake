@@ -159,7 +159,7 @@ namespace :slurp do
     csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1", :col_sep => ';')
     
     csv.each do |row|
-      u = User.find(row["user_id"]-256)  
+      u = User.find(row["user_id"])  
       n = Nivel.new
       n.user_id = u.id
       n.save
