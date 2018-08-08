@@ -136,17 +136,17 @@ namespace :slurp do
   task load_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios3.csv"))
-    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+    csv_text = File.read(Rails.root.join("lib", "csvs", "segundointento.csv"))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1", :col_sep => ';',)
     
     csv.each do |row|
-      puts(row["EMAIL"], row["NOMBRE"], "hola")
-      u = User.create!({:email => row["EMAIL"], :password => row["PASSWORD"], :password_confirmation => row["PASSWORD"]})  
-      u.first_name = row["NOMBRE"]
-      u.last_name = row["APELLIDO"]
-      u.sala_id = row["SALA ID"]
-      u.pinicial = row["PINICIAL"]
-      u.save
+     
+       u = User.create!({:email => row["mail"], :password => row["pass"], :password_confirmation => row["pass"]})  
+       u.first_name = row["nombre"]
+       u.last_name = row["apellido"]
+       u.sala_id = row["sala_id"]
+       u.pinicial = row["pinicial"]
+       u.save
     end
     
     puts "There are now #{User.count} rows in the usuario table"
@@ -155,8 +155,8 @@ namespace :slurp do
   task nivel_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarios3.csv"))
-    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+    csv_text = File.read(Rails.root.join("lib", "csvs", "segundointento.csv"))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1", :col_sep => ';')
     
     csv.each do |row|
       u = User.find(row["user_id"])  
@@ -202,4 +202,26 @@ namespace :slurp do
     puts "There are now #{Nivel.count} rows in the Nivel table, and #{Puntaje.count} rows in the Puntaje table"
   end
   
+   task :read_csv => :environment do |t, args|
+     require "csv"
+    
+     csv_text = File.read(Rails.root.join("lib", "csvs", "contenidos.csv"))
+     csv = CSV.parse(csv_text, :headers=>true)
+     fila=0
+     csv.each do |row|
+       fila = fila+1
+       puts(row['Enunciado'],fila)
+     end
+    end
+  
+  task users: :environment do 
+    filename = File.join Rails.root, "lib", "csvs", "usuarios3.csv"
+    CSV.foreach(filename) do |row|
+      curso, rut, nombre, n2, apellido, n2, p_inicial, mail, pass, userid, salaid = row
+      User.create(email: mail, password: pass, password_confirmation: pass, first_name: nombre, last_name: apellido, pinicial: p_inicial, sala_id: salaid)
+    end
+  end
+  
+  
 end
+
