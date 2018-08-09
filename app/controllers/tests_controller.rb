@@ -6,7 +6,7 @@ class TestsController < ApplicationController
   end
   
   def index_prof
-    @tests = Test.where("profesor_id == ?", current_profesor.id)
+    @tests = Test.where(profesor_id: current_profesor.id)
 
     render("test_templates/index_prof.html.erb")
   end

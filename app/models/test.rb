@@ -16,7 +16,7 @@ class Test < ApplicationRecord
     has_many :salas, :through => :asignacions, :source => :sala
     
     def resuelta(usid)
-        IntentoTest.where("test_id == ? and user_id == ? ", self.id, usid).last != nil
+        IntentoTest.where(:test_id => self.id, :user_id => usid).last != nil
     end
     
     
