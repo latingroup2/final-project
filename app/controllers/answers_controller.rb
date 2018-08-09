@@ -55,8 +55,8 @@ class AnswersController < ApplicationController
     
       session[:track] = @track_contenidos
 
-    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
-      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).sample.id  
     elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
       id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
@@ -153,8 +153,8 @@ class AnswersController < ApplicationController
 
     session[:record]=record
 
-    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
-      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).sample.id  
     elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
       id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
@@ -261,8 +261,8 @@ class AnswersController < ApplicationController
 
     session[:record]=record
 
-    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
-      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holgura_nextej)..(p.score+holgura_nextej)).sample.id  
     elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
       id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
