@@ -28,14 +28,14 @@ class EjerciciosController < ApplicationController
     end
     
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", catid).last
+    p= n.puntajes.where(:categoria_id => catid).last
     
-    if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", @cont_id, p.score-holg_inicial, p.score+holg_inicial).last != nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", @cont_id, p.score-holg_inicial, p.score+holg_inicial).sample.id  
-    elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", @cont_id, p.score-400, p.score+400).last!= nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", @cont_id, p.score-400, p.score+400).sample.id
+    if Ejercicio.where(:contenido_id => @cont_id).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => @cont_id).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).sample.id  
+    elsif Ejercicio.where(:contenido_id => @cont_id).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
+      id_prox_ej = Ejercicio.where(:contenido_id => @cont_id).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
-      id_prox_ej = Ejercicio.where("contenido_id==?", @cont_id).sample.id
+      id_prox_ej = Ejercicio.where(contenido_id: @cont_id).sample.id
     end
     
     
@@ -62,7 +62,7 @@ class EjerciciosController < ApplicationController
     a= Answer.resp(idej)
     @rightanswer = a.right_answer
     @allanswers = [a.right_answer, a.wrong_1, a.wrong_2, a.wrong_3, a.wrong_4].sample(5)
-    @idintentoguia = IntentoTest.where("user_id == ?", current_user.id).last.id
+    @idintentoguia = IntentoTest.where(user_id: current_user.id).last.id
     
     @ejercicio = Ejercicio.find(idej)
     @cont = Contenido.find(@ejercicio.contenido_id).nombre 
@@ -100,14 +100,16 @@ class EjerciciosController < ApplicationController
     end
     
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", catid).last
+    p= n.puntajes.where(categoria_id: catid).last
     
-    if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", params[:id_cont], p.score-holg_inicial, p.score+holg_inicial).last != nil
-      id_prox_ej= Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", params[:id_cont], p.score-holg_inicial, p.score+holg_inicial).sample.id
-    elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", @cont_id, p.score-400, p.score+400).last != nil
-      id_prox_ej= Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", params[:id_cont], p.score-400, p.score+400).sample.id
+    
+    
+    if Ejercicio.where(:contenido_id => params[:id_cont]).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).last != nil
+      id_prox_ej= Ejercicio.where(:contenido_id => params[:id_cont]).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).sample.id
+    elsif Ejercicio.where(:contenido_id => params[:id_cont]).where(dificultad: (p.score-400)..(p.score+400)).last != nil
+      id_prox_ej= Ejercicio.where(:contenido_id => params[:id_cont]).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
-      id_prox_ej= Ejercicio.where("contenido_id==?", params[:id_cont]).sample.id
+      id_prox_ej= Ejercicio.where(contenido_id: params[:id_cont]).sample.id
     end
       
     # Setar otras variables que haya que inicializar
@@ -163,14 +165,14 @@ class EjerciciosController < ApplicationController
     end
     
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", catid).last
+    p= n.puntajes.where(categoria_id: catid).last
     
-    if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", cont.id, p.score-holg_inicial, p.score+holg_inicial).last != nil
-      id_prox_ej= Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", cont.id, p.score-holg_inicial, p.score+holg_inicial).sample.id
-    elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", cont.id, p.score-400, p.score+400).last != nil
-      id_prox_ej= Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", cont.id, p.score-400, p.score+400).sample.id
+    if Ejercicio.where(:contenido_id => cont.id).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).last != nil
+      id_prox_ej= Ejercicio.where(:contenido_id => cont.id).where(dificultad: (p.score-holg_inicial)..(p.score+holg_inicial)).sample.id
+    elsif Ejercicio.where(:contenido_id => cont.id).where(dificultad: (p.score-400)..(p.score+400)).last != nil
+      id_prox_ej= Ejercicio.where(:contenido_id => cont.id).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
-      id_prox_ej= Ejercicio.where("contenido_id==?", cont.id).sample.id
+      id_prox_ej= Ejercicio.where(contenido_id: cont.id).sample.id
     end
     
     redirect_to("/ejercitar/res_avanzar/#{id_prox_ej}")
@@ -269,7 +271,7 @@ class EjerciciosController < ApplicationController
   
   def show_prof
     @ejercicio = Ejercicio.find(params.fetch("id_to_display"))
-    @answer = Answer.where("excercise_id == ?", @ejercicio.id).last
+    @answer = Answer.where(excercise_id: @ejercicio.id).last
 
     render("ejercicio_templates/show_prof.html.erb")
   end

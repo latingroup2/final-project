@@ -65,19 +65,7 @@
                 
                 <td>
                   <!--- Revisa el nivel vigente al empezar el plazo estipulado (variable "plazo" definida en linea 1 de este codigo) y compara con nivel actual --->
-                  <% if Nivel.ultimo_nivel(current_user.id, plazo) == nil %>
-                    <% p_inicial = 0 %>
-                  <% else %>
-                    <% p_inicial = Nivel.ultimo_nivel(current_user, plazo).puntajes.where(categoria_id: puntaje.categoria_id).last.score %>
-                  <% end %>
-                  
-                  <% if Nivel.ultimo_nivel(current_user.id, 0) == nil %>
-                    <% p_actual = 0 %>
-                  <% else %>
-                    <% p_actual = current_user.nivels.last.puntajes.where(categoria_id: puntaje.categoria_id).last.score %>
-                    <%= p_actual - p_inicial %>
-                  <% end %>
-            
+                  NA
                 </td>
             
                 <td>

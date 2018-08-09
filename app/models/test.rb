@@ -26,13 +26,13 @@ class Test < ApplicationRecord
         num = 0
         aux=0
         
-        Seccion.where("test_id == ?", self.id).each do |seccion|
+        Seccion.where(test_id: self.id).each do |seccion|
             num = seccion.numero_ejercicios + num
         end
         
-        IntentoTest.where("test_id == ? and user_id == ? ", self.id, usid).each do |intento|
+        IntentoTest.where(:test_id =>  self.id, :user_id => usid).each do |intento|
             
-            buenas = Try.where("intento_guia_id == ? and correct ==?", intento.id, true).count
+            buenas = Try.where(:intento_guia_id => intento.id,  :correct => true).count
             
             if buenas.to_f/num >= mayor
                 mayor = buenas.to_f/num

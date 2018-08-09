@@ -23,8 +23,8 @@ class Sala < ApplicationRecord
         contador = 0
         self.users.each do |alumno|
             if alumno.nivels.last != nil
-                if alumno.nivels.last.puntajes.where("categoria_id==?", catid).last.score >= inf
-                    if alumno.nivels.last.puntajes.where("categoria_id==?", catid).last.score < sup
+                if alumno.nivels.last.puntajes.where(categoria_id: catid).last.score >= inf
+                    if alumno.nivels.last.puntajes.where(categoria_id: catid).last.score < sup
                         contador = contador+1
                     end
                 end

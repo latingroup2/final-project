@@ -335,21 +335,21 @@
                       <a href = "/nivels_prof/<%= alumno.id %>"> <%= alumno.last_name.to_s + " " + alumno.first_name.to_s %> </a>
                     </th>
                     <th>
-                      <% tratados= Try.where("user_id==?",alumno.id).count %>
+                      <% tratados= Try.where(user_id: alumno.id).count %>
                       <% if tratados == 0 %>
                         <% tratados =1 %>
                       <% end %>
-                      <% buenos = Try.where("user_id==? and correct ==?",alumno.id, true).count %>
+                      <% buenos = Try.where(:user_id => alumno.id, :correct => true).count %>
                       <p> <%= tratados.to_s + " (" + (100*buenos/tratados).to_s + "%)"  %> </p>
                     </th>
                     <th>
                       <% if alumno.nivels.last != nil %>
-                        <%= alumno.nivels.last.puntajes.where("categoria_id == ?",1).last.score %>
+                        <%= alumno.nivels.last.puntajes.where(categoria_id: 1).last.score %>
                       <% end %>  
                     </th>
                     <th>
                       <% if alumno.nivels.last != nil %>
-                        <%= alumno.nivels.last.puntajes.where("categoria_id == ?",2).last.score %>
+                        <%= alumno.nivels.last.puntajes.where(categoria_id: 2).last.score %>
                       <% end %> 
                     </th>
                     <th>

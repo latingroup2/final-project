@@ -108,7 +108,7 @@
                   <!-- Label and input for numero_ejercicios -->
                   <td>
                     <div class="form-group">
-                      <input type="text" id="numero_ejercicios" name="numero_ejercicios" class="form-control" value="# ejercicios">
+                      <input type="text" id="numero_ejercicios" name="numero_ejercicios" class="form-control" value="#">
                     </div>
                   </td>
                   
@@ -162,7 +162,7 @@
                   <!-- Label and input for sala_id -->
                   <td>
                     <div class="form-group">
-                      <%= select_tag("sala_id", options_from_collection_for_select(Sala.where("profesor_id == ?", @test.profesor_id), :id, :nombre), :class => "form-control") %>
+                      <%= select_tag("sala_id", options_from_collection_for_select(Sala.where(profesor_id: @test.profesor_id), :id, :nombre), :class => "form-control") %>
                     </div>
                   </td>
                   

@@ -36,12 +36,12 @@ class AnswersController < ApplicationController
     
     # Alterar el nivel del alumno de acuerdo a resultado
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", cat).last
+    p= n.puntajes.where(categoria_id: cat).last
     p.score = p.nuevo_puntaje(correcto, idej, current_user.id)
     p.save
     
     if IntentoTest.find(idintentoguia).pendiente == 1
-      res = (Try.where("intento_guia_id == ? and correct == ?", idintentoguia, true).count.to_f / Try.where("intento_guia_id == ? ", idintentoguia).count)*100
+      res = (Try.where(:intento_guia_id => idintentoguia, :correct => true).count.to_f / Try.where(intento_guia_id: idintentoguia).count)*100
       mensaje = "Terminamos la guia con #{res}% de respuestas correctas. Buen esfuerzo!"
       redirect_to("/ejercicios", :notice => mensaje)
     else
@@ -55,15 +55,14 @@ class AnswersController < ApplicationController
     
       session[:track] = @track_contenidos
 
-      if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).last != nil
-        id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).sample.id
-      elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).last != nil
-        id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).sample.id
-      else
-        Ejercicio.where("contenido_id==?", contid).sample.id
-      end
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
+    else
+      id_prox_ej = Ejercicio.where(contenido_id: contid).sample.id
+    end
 
-      
       if correcto == 1
         mensaje = "Correcto! Sigamos así" 
       else
@@ -109,7 +108,7 @@ class AnswersController < ApplicationController
     
     # Alterar el nivel del alumno de acuerdo a resultado
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", cat).last
+    p= n.puntajes.where(categoria_id: cat).last
     p.score = p.nuevo_puntaje(correcto, idej, current_user.id)
     p.save
 
@@ -153,14 +152,15 @@ class AnswersController < ApplicationController
     end
 
     session[:record]=record
-    
-    if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).last != nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).sample.id 
-    elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).last != nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).sample.id
+
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
-      id_prox_ej = Ejercicio.where("contenido_id==? ", contid).sample.id
+      id_prox_ej = Ejercicio.where(contenido_id: contid).sample.id
     end
+    
     
     if correcto == 1
       if avance
@@ -217,7 +217,7 @@ class AnswersController < ApplicationController
 
     # Alterar el nivel del alumno de acuerdo a resultado
     n = current_user.nivels.last
-    p= n.puntajes.where("categoria_id ==?", cat).last
+    p= n.puntajes.where(categoria_id: cat).last
     p.score = p.nuevo_puntaje(correcto, idej, current_user.id)
     p.save
 
@@ -260,14 +260,15 @@ class AnswersController < ApplicationController
     end
 
     session[:record]=record
-    
-    if Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).last != nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-holgura_nextej, p.score+holgura_nextej).sample.id
-    elsif Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).last != nil
-      id_prox_ej = Ejercicio.where("contenido_id==? and dificultad>=? and dificultad <= ?", contid, p.score-400, p.score+400).sample.id
+
+    if Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).last != nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-holg_nextej)..(p.score+holg_nextej)).sample.id  
+    elsif Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).last!= nil
+      id_prox_ej = Ejercicio.where(:contenido_id => contid).where(dificultad: (p.score-400)..(p.score+400)).sample.id
     else
-      id_prox_ej = Ejercicio.where("contenido_id==?", contid).sample.id
+      id_prox_ej = Ejercicio.where(contenido_id: contid).sample.id
     end
+    
     
     if correcto == 1
       if avance

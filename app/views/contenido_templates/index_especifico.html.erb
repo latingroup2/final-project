@@ -52,7 +52,7 @@
             <div class="card-body" align="left" style="font-size:90%;">
               
                     <list>
-                      <% Contenido.where("tema_id == ?",tema.id).each do |cont| %>
+                      <% Contenido.where(tema_id: tema.id).each do |cont| %>
                         <li>  <%= cont.nombre %> </li>
                       <% end %>
                     </list>

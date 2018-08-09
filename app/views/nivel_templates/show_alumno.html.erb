@@ -152,9 +152,9 @@
                     Resultado
                   </th>
                 </tr>
-                <% if Try.where("user_id == ?", @alumno.id).last != nil %>
-                    <% lasts = [Try.where("user_id == ?", @alumno.id).count, 10].min %>
-                    <% Try.where("user_id == ?", @alumno.id).last(lasts).reverse().each do |try| %>
+                <% if Try.where(user_id: @alumno.id).last != nil %>
+                    <% lasts = [Try.where(user_id: @alumno.id).count, 10].min %>
+                    <% Try.where(user_id: @alumno.id).last(lasts).reverse().each do |try| %>
                         <tr>
                           <th>
                             <a href = "/ejercicios_prof/<%= try.excercise_id%>"> Ejercicio <%= try.excercise_id %> </a>

@@ -27,13 +27,13 @@ class Puntaje < ApplicationRecord
       pond_actual = 0.10
       base=300
       
-      if Categorium.find(catid).tries.where("user_id ==?", usid).last == nil
+      if Categorium.find(catid).tries.where(user_id: usid).last == nil
         pun_historico = 0
 
-      elsif Categorium.find(catid).tries.where("user_id ==?", usid).count < historia
-        ult_tries = Categorium.find(catid).tries.where("user_id ==?", usid)
+      elsif Categorium.find(catid).tries.where(user_id: usid).count < historia
+        ult_tries = Categorium.find(catid).tries.where(user_id: usid)
       else
-        ult_tries = Categorium.find(catid).tries.where("user_id ==?", usid).last(historia)
+        ult_tries = Categorium.find(catid).tries.where(user_id: usid).last(historia)
       end
       
       if ult_tries != [0]
@@ -63,9 +63,9 @@ class Puntaje < ApplicationRecord
       
  end
 
-# Muestra los puntajes de un nivel en particular, sobre un plazo (en dias)
+# OJO. INCOMPLETA. Hay que hacerlo "mayor o igual". Muestra los puntajes de un nivel en particular, sobre un plazo (en dias)
  def self.mostrar_puntajes(nivelid, days)
-     where("created_at >= ? and nivel_id = ?", Time.zone.now - days*24*60*60, nivelid)
+     where(:created_at => Time.zone.now - days*24*60*60, :nivel_id => nivelid)
  end
     
 end

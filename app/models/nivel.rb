@@ -38,8 +38,9 @@ class Nivel < ApplicationRecord
         end
     end
     
+    # Ojo! Esta incompleta. Le borre la parte de mayor o igual a cierta fecha
     def self.ultimo_nivel(userid, days)
-        where("created_at <= ? and user_id == ?", Time.zone.now - days*24*60*60, userid).last
+        where(user_id: userid).last
     end
     
 end
