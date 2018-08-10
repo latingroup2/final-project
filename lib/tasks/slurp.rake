@@ -136,7 +136,7 @@ namespace :slurp do
   task load_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "segundointento.csv"))
+    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarioscc.csv"))
     csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1", :col_sep => ';',)
     
     csv.each do |row|
@@ -155,7 +155,7 @@ namespace :slurp do
   task nivel_users: :environment do
   require "csv"
 
-    csv_text = File.read(Rails.root.join("lib", "csvs", "segundointento.csv"))
+    csv_text = File.read(Rails.root.join("lib", "csvs", "usuarioscc.csv"))
     csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1", :col_sep => ';')
     
     csv.each do |row|

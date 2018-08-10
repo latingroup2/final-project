@@ -7,7 +7,7 @@ class NivelsController < ApplicationController
 
   def show_alumno
     @alumno = User.find(params.fetch("id_to_display"))
-    @puns = [@alumno.nivels.last.puntajes.where("categoria_id==?", 1).last.score, @alumno.nivels.last.puntajes.where("categoria_id==?", 2).last.score]
+    @puns = [@alumno.nivels.last.puntajes.where(categoria_id: 1).last.score, @alumno.nivels.last.puntajes.where(categoria_id: 2).last.score]
 
     render("nivel_templates/show_alumno.html.erb")
   end
