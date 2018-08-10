@@ -205,23 +205,14 @@ namespace :slurp do
    task :read_csv => :environment do |t, args|
      require "csv"
     
-     csv_text = File.read(Rails.root.join("lib", "csvs", "contenidos.csv"))
+     csv_text = File.read(Rails.root.join("lib", "csvs", "usuarioscc.csv"))
      csv = CSV.parse(csv_text, :headers=>true)
      fila=0
      csv.each do |row|
        fila = fila+1
-       puts(row['Enunciado'],fila)
+       puts(row, row['mail'], fila)
      end
     end
-  
-  task users: :environment do 
-    filename = File.join Rails.root, "lib", "csvs", "usuarios3.csv"
-    CSV.foreach(filename) do |row|
-      curso, rut, nombre, n2, apellido, n2, p_inicial, mail, pass, userid, salaid = row
-      User.create(email: mail, password: pass, password_confirmation: pass, first_name: nombre, last_name: apellido, pinicial: p_inicial, sala_id: salaid)
-    end
-  end
-  
   
 end
 
