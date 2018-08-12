@@ -73,3 +73,7 @@
 .bg-warning{
     background-color: #E3D888 !important;
 }
+
+.card-header a{
+    color: white !important;
+}
