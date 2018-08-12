@@ -12,3 +12,64 @@
  *
  *= require_self
  */
+
+.logo{
+    width: 100%;
+}
+
+.btn-primary{
+    background-color: #3F74BA;
+    border-color: #3F74BA;
+}
+
+.btn-primary:hover{
+    background-color: #7399CC;
+    border-color: #7399CC;
+}
+
+.btn-warning{
+    background-color: #E3D888;
+    border-color: #E3D888;
+}
+
+.btn-success{
+    background-color: #0FA3B1;
+    border-color: #0FA3B1;
+}
+
+.btn-secondary{
+    background-color: #E3D888;
+    border-color: #E3D888;
+}
+
+.border-secondary{
+    border-color: #0FA3B1 !important;
+}
+
+.bg-secondary{
+    background-color: #0FA3B1 !important;
+}
+
+.border-primary{
+    border-color: #3F74BA !important;
+}
+
+.bg-primary{
+    background-color: #3F74BA !important;
+}
+
+.border-success{
+    border-color: #0FA3B1 !important;
+}
+
+.bg-success{
+    background-color: #0FA3B1 !important;
+}
+
+.border-warning{
+    border-color: #E3D888 !important;
+}
+
+.bg-warning{
+    background-color: #E3D888 !important;
+}
